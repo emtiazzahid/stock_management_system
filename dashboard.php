@@ -10,15 +10,11 @@ include_once("init.php");
     <title>SDK - Dashboard</title>
 
     <!-- Stylesheets -->
+<?php include("assets/css.php"); ?>
 
-    <link rel="stylesheet" href="css/style.css">
 
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
-    <?php include_once("tpl/common_js.php"); ?>
-    <script src="js/script.js"></script>
 </head>
 <body>
 
@@ -46,7 +42,9 @@ include_once("init.php");
 
         <!-- Change this image to your own company's logo -->
         <!-- The logo will automatically be resized to 30px height. -->
-        <?php $line = $db->queryUniqueObject("SELECT * FROM store_details ");
+        <?php 
+        $line = $db->queryUniqueObject("SELECT * FROM store_details ");
+
         $_SESSION['logo'] = $line->log;
         ?>
         <a href="#" id="company-branding-small" class="fr"><img src="upload/posnic.png"/></a>
@@ -58,42 +56,49 @@ include_once("init.php");
 <!-- end header -->
 
 
-<!-- MAIN CONTENT -->
-<div id="content">
-
-    <div class="page-full-width cf">
-
-        <div class="side-menu fl">
-
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="add_sales.php">Add Sales</a></li>
-                <li><a href="add_purchase.php">Add Purchase</a></li>
-                <li><a href="add_supplier.php">Add Supplier</a></li>
-                <li><a href="add_customer.php">Add Customer</a></li>
-                <li><a href="view_report.php">Report</a></li>
-            </ul>
-
-        </div>
-        <!-- end side-menu -->
-
-        <div class="side-content fr">
-
-            <div class="content-module">
-
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Statistics</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
+    <div class="container-fluid">
+    <div class="row">
+           <div class="col-md-3">
+            <div class="panel panel-default">
+              <div class="panel-heading epanel">Panel heading without title</div>
+              <div class="panel-body">
+              <nav class="navbar navbar-default sidebar" role="navigation">
+                <div class="navbar-header">   
                 </div>
-                <!-- end content-module-heading -->
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="add_sales.php">Add Sales</a></li>
+                    <li><a href="add_purchase.php">Add Purchase</a></li>
+                    <li><a href="add_supplier.php">Add Supplier</a></li>
+                    <li><a href="add_customer.php">Add Customer</a></li>
+                    <li><a href="view_report.php">Report</a></li>
+                  </ul>
+                </div>
+            </nav>
 
-                <div class="content-module-main cf">
-
-
-                    <table style="width:350px; float:left;" border="0" cellpadding="0" cellspacing="0">
+              </div>
+            </div>
+        </div>
+            <div class="col-md-8">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              <ul class="nav nav-tabs" role="tablist">
+                  <li class="active">
+                    <a href="#statistics" role="tab" data-toggle="tab">Statistics</a>
+                  </li>
+    <?php 
+            $stock_avail = $db->countOfAll("stock_avail");
+            if ($stock_avail <= 7) { ?>
+                  <li><a href="#alerts" role="tab" data-toggle="tab" style="color:red">Alerts</a></li>
+     <?php 
+        }
+    ?>
+                </ul>
+              </div>
+              <div class="panel-body">
+               <div class="tab-content">
+                  <div class="tab-pane active" id="statistics">
+                                         <table style="width:350px; float:left;" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <td width="250" align="left">&nbsp;</td>
                             <td width="150" align="left">&nbsp;</td>
@@ -136,27 +141,25 @@ include_once("init.php");
                         </tr>
                     </table>
 
-
+                  </div>
+                  <div class="tab-pane" id="alerts">
+                      <div class="alert alert-danger alert-dismissable">
+                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                          <strong>lower products quantity!</strong> Please Add more
+                        </div>
+                  </div>
                 </div>
-                <!-- end content-module-main -->
-
-
+              </div>
             </div>
-            <!-- end content-module -->
-
-
-        </div>
-        <!-- end full-width -->
-
+            </div>
     </div>
 </div>
-
-
 <!-- FOOTER -->
 <div id="footer">
    
 </div>
 <!-- end footer -->
 
+<?php include("assets/js.php"); ?>
 </body>
 </html>

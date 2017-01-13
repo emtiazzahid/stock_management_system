@@ -1,109 +1,37 @@
-<?php
-include_once("init.php");
+<?php include("master_head.php"); ?>
 
-?>
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>POSNIC - Payment</title>
-
-    <!-- Stylesheets -->
-    <!---->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Optimize for mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
-
-</head>
-<body>
-
-<!-- TOP BAR -->
-<?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
-<div id="header-with-tabs">
-
-    <div class="page-full-width cf">
-
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class=" stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="active-tab payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
-        </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="upload/posnic.png"/></a>
-
-    </div>
-    <!-- end full-width -->
-
-</div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
-<div id="content">
-
-    <div class="page-full-width cf">
-
-        <div class="side-menu fl">
-
-            <h3>Payment</h3>
-            <ul>
-                <li><a href="view_payments.php">Payments</a></li>
-
-            </ul>
-
-        </div>
-        <!-- end side-menu -->
-
-        <div class="side-content fr">
-
-            <div class="content-module">
-
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Payment</h3>
-
+<div class="container-fluid">
+    <div class="row">
+           <div class="col-md-2">
+            <div class="panel panel-default">
+              <div class="panel-heading epanel">Payments</div>
+              <div class="panel-body">
+              <nav class="navbar navbar-default sidebar" role="navigation">
+                <div class="navbar-header">   
                 </div>
-                <!-- end content-module-heading -->
-
-                <div class="content-module-main cf">
-
-
-                    <table>
-                        <form action="" method="post" name="search">
-                            <input name="searchtxt" type="text" class="round my_text_box" placeholder="Search">
-                            &nbsp;&nbsp;<input name="Search" type="submit" class="my_button round blue   text-upper"
-                                               value="Search">
-                        </form>
-                        <form action="" method="get" name="limit_go">
-                            Page per Record<input name="limit" type="text" class="round my_text_box" id="search_limit"
-                                                  style="margin-left:5px;"
-                                                  value="<?php if (isset($_GET['limit'])) echo $_GET['limit']; else echo "10"; ?>"
-                                                  size="3" maxlength="3">
-                            <input name="go" type="button" value="Go" class=" round blue my_button  text-upper"
-                                   onclick="return confirmLimitSubmit()">
-                        </form>
-
-                        <form name="deletefiles" action="delete.php" method="post">
-
-
-                            <table>
-
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                           <li><a href="view_payments.php">Payments</a></li>
+                  </ul>
+                </div>
+            </nav>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+        <div class="panel panel-default">
+              <div class="panel-heading">
+              <ul class="nav nav-tabs" role="tablist">
+                  <li class="active">
+                    <a href="#payment" role="tab" data-toggle="tab">Payment</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="panel-body">
+               <div class="tab-content">
+                  <div class="tab-pane active" id="payment">
+                       <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Transaction Id</th>
@@ -114,57 +42,40 @@ include_once("init.php");
                                     <th>Add Payment</th>
 
                                 </tr>
+                                </thead>
+                                <tbody>
                               <tr>
-
+                                        <td>Lorem ipsum</td>
+                                        <td>Lorem ipsum</td>
 
                                         <td>Lorem ipsum</td>
-                                        <td width="100">Lorem ipsum</td>
 
-                                        <td width="100">Lorem ipsum</td>
-
-                                        <td width="100">Lorem ipsum</td>
-                                        <td width="100">Lorem ipsum</td>
-                                        <td width="100">Lorem ipsum</td>
-                                        <td>
-                                            <a href="#">Pay
-                                                now
-                                            </a>
-
-                                        </td>
-
-
+                                        <td>Lorem ipsum</td>
+                                        <td>Lorem ipsum</td>
+                                        <td >Lorem ipsum</td>
+                                        <td><a href="#">Pay now</a></td>
                                 </tr>
                                 <tr>
-
+                                        <td>Lorem ipsum</td>
+                                        <td>Lorem ipsum</td>
 
                                         <td>Lorem ipsum</td>
-                                        <td width="100">Lorem ipsum</td>
 
-                                        <td width="100">Lorem ipsum</td>
-
-                                        <td width="100">Lorem ipsum</td>
-                                        <td width="100">Lorem ipsum</td>
-                                        <td width="100">Lorem ipsum</td>
-                                        <td>
-                                            <a href="#">Pay
-                                                now
-                                            </a>
-
-                                        </td>
-
-
+                                        <td>Lorem ipsum</td>
+                                        <td>Lorem ipsum</td>
+                                        <td >Lorem ipsum</td>
+                                        <td><a href="#">Pay now</a></td>
                                 </tr>
-
+                                </tbody>
                             </table>
-                        </form>
-
-
+                  </div>
                 </div>
+              </div>
             </div>
-            <div id="footer">
+        </div>
+    </div>
+</div>
 
-            </div>
-            <!-- end footer -->
 
-</body>
-</html>
+
+<?php include("master_foot.php"); ?>
