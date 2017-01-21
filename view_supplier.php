@@ -69,11 +69,11 @@
                                 <td> <?php echo $row['supplier_contact1']; ?></td>
                                 <td> <?php echo $row['balance']; ?></td>
                                 <td>
-                                    <a href="update_sales.php?sid=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
+                                    <a href="update_supplier.php?sid=<?php echo $row['id']; ?>&table=supplier_details"
                                        class="table-actions-button ic-table-edit">
                                     </a>
                                     <a onclick="return confirmSubmit()"
-                                       href="delete.php?id=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
+                                       href="delete.php?id=<?php echo $row['id']; ?>&table=supplier_details"
                                        class="table-actions-button ic-table-delete"></a>
                                 </td>
                             </tr>

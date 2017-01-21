@@ -1,8 +1,5 @@
 <?php include("master_head.php"); ?>
 
-
-
-
 <div class="container-fluid">
     <div class="row">
            <div class="col-md-2">

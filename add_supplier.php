@@ -1,167 +1,106 @@
+<?php include("master_head.php"); ?>
 <?php
-include_once("init.php");
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $contact1 = $_POST['contact1'];
+    $contact2= $_POST['contact2'];
+    $address= $_POST['address'];
+    $balance= $_POST['balance'];
+
+    $query  = "INSERT into supplier_details (supplier_name, supplier_address, supplier_contact1,supplier_contact2,balance)
+              VALUES ('$name','$address',  '$contact1','$contact2','$balance')";
+    $db->execute($query);
+    header('Location: view_supplier.php');
+}
+
 
 ?>
-<!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>POSNIC - Add Supplier</title>
-
-    <!-- Stylesheets -->
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/date_pic/date_input.css">
-    <link rel="stylesheet" href="lib/auto/css/jquery.autocomplete.css">
-
-    <!-- Optimize for mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
-    <?php include_once("tpl/common_js.php"); ?>
-    <script src="js/script.js"></script>
-    <script src="js/date_pic/jquery.date_input.js"></script>
-    <script src="lib/auto/js/jquery.autocomplete.js "></script>
-    <script src="js/script.js"></script>
-</head>
-<body>
-
-<!-- TOP BAR -->
-<?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
-<div id="header-with-tabs">
-
-    <div class="page-full-width cf">
-
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class=" sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class="customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class="active-tab   supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
-        </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
-    </div>
-    <!-- end full-width -->
-
-</div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
-<div id="content">
-
-    <div class="page-full-width cf">
-
-        <div class="side-menu fl">
-
-            <h3>supplier Management</h3>
-            <ul>
-                <li><a href="add_supplier.php">Add Supplier</a></li>
-                <li><a href="view_supplier.php">View Supplier</a></li>
-            </ul>
-
-        </div>
-        <!-- end side-menu -->
-
-        <div class="side-content fr">
-
-            <div class="content-module">
-
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Add supplier</h3>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading epanel">Supplier</div>
+                <div class="panel-body">
+                    <nav class="navbar navbar-default sidebar" role="navigation">
+                        <div class="navbar-header">
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="add_supplier.php">Add Supplier</a></li>
+                                <li><a href="view_supplier.php">View Supplier</a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-                <!-- end content-module-heading -->
-
-                <div class="content-module-main cf">
-
-                    <form name="form1" method="post" id="form1" action="">
-
-                        <p><strong>Add Supplier Details </strong> Add New</p>
-                        <table class="form" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td><span class="man">*</span>Name:</td>
-                                <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
-                                           maxlength="200" class="round default-width-input"
-                                           value=""/></td>
-                                <td>Contact 1</td>
-                                <td><input name="contact1" placeholder="ENTER YOUR ADDRESS contact1" type="text"
-                                           id="buyingrate" maxlength="20" class="round default-width-input"
-                                           value=""/></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td><textarea name="address" placeholder="ENTER YOUR ADDRESS" cols="8"
-                                              class="round full-width-textarea"></textarea>
-                                </td>
-                                <td>Contact 2</td>
-                                <td><input name="contact2" placeholder="ENTER YOUR contact2" type="text"
-                                           id="sellingrate" maxlength="20" class="round default-width-input"
-                                           value=""/></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-
-
-                            <tr>
-                                <td>
-                                    &nbsp;
-                                </td>
-                                <td>
-                                    <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
-
-                                <td align="right"><input class="button round red   text-upper" type="reset" name="Reset"
-                                                         value="Reset"></td>
-                            </tr>
-                        </table>
-                    </form>
-
-
-                </div>
-                <!-- end content-module-main -->
-
-
             </div>
-            <!-- end content-module -->
-
-
         </div>
-        <!-- end full-width -->
-
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active">
+                            <a href="#supplier" role="tab" data-toggle="tab">Supplier</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="supplier">
+                            <form action="" method="post">
+                                <div class="col-md-8"><br>
+                                    <table class="table">
+                                        <tr>
+                                            <td class="col-md-1">
+                                                *Name:
+                                            </td>
+                                            <td class="col-md-3">
+                                                <input type="text"  class="form-control" name="name" id="" placeholder="">
+                                            </td>
+                                            <td class="col-md-1">
+                                                Contact 1:
+                                            </td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="contact1" id="">
+                                            </td>
+                                            <td class="col-md-1">
+                                                Contact 2:
+                                            </td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="contact2" id="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">
+                                                Address:
+                                            </td>
+                                            <td class="col-md-3" colspan="3">
+                                                <textarea  col="5" row="3" class="form-control" name="address" id=""></textarea>
+                                            </td>
+                                            <td class="col-md-2">
+                                                Balance:
+                                            </td>
+                                            <td class="col-md-3">
+                                                <input type="text" class="form-control" name="balance" id="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <button type="submit" name="submit" class="btn btn-info">Add+</button>
+                                            </td>
+                                            <td colspan="2">
+                                                <button type="clear" name="clear" class="btn btn-danger">Clear</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- end content -->
+</div>
 
-
-    <!-- FOOTER -->
-    <div id="footer">
-
-    </div>
-    <!-- end footer -->
-
-</body>
-</html>
+<?php include("master_foot.php"); ?>
