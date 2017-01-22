@@ -5,14 +5,14 @@
     <div class="row">
            <div class="col-md-2">
             <div class="panel panel-default">
-              <div class="panel-heading epanel">Panel heading without title</div>
+              <div class="panel-heading epanel">Products/Stocks</div>
               <div class="panel-body">
               <nav class="navbar navbar-default sidebar" role="navigation">
                 <div class="navbar-header">   
                 </div>
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                      <li class="active"><a href="add_stock.php">Add Stock/Product</a></li>
+                      <li><a href="add_stock.php">Add Stock/Product</a></li>
                       <li><a href="view_product.php">View Stock/Product</a></li>
                       <li><a href="add_category.php">Add Stock Category</a></li>
                       <li><a href="view_category.php">view Stock Category</a></li>
@@ -40,56 +40,61 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Stock Name</th>
-                    <th>Stock Id</th>
-                    <th>Date</th>
-                    <th>Customer</th>
-                    <th>Payment</th>
-                    <th>Amount</th>
+                    <th>stock id</th>
+                    <th>stock name</th>
+                    <th>stock quatity</th>
+                    <th>supplier id</th>
+                    <th>company price</th>
+                    <th>selling price</th>
+                    <th>category</th>
+                    <th>date</th>
+                    <th>expire date</th>
                     <th>Edit /Delete</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Stock Name</th>
-                    <th>Stock Id</th>
-                    <th>Date</th>
-                    <th>Customer</th>
-                    <th>Payment</th>
-                    <th>Amount</th>
+                    <th>stock id</th>
+                    <th>stock name</th>
+                    <th>stock quatity</th>
+                    <th>supplier id</th>
+                    <th>company price</th>
+                    <th>selling price</th>
+                    <th>category</th>
+                    <th>date</th>
+                    <th>expire date</th>
                     <th>Edit /Delete</th>
                 </tr>
                 </tfoot>
                 <tbody>
+                    <?php
+                    $sql = "SELECT * FROM stock_details";
+                    $result = mysqli_query($db->connection, $sql);
+                    while ($row = mysqli_fetch_array($result)) {
+                        ?>
                     <tr>
-                        <td>1</td>
-                        <td>Pen</td>
-                        <td>4344</td>
-                        <td>1/8/2016</td>
-                        <td>Md. Emtiaz</td>
-                        <td>4000</td>
-                        <td>4000</td>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['stock_id']; ?></td>
+                        <td><?php echo $row['stock_name']; ?></td>
+                        <td><?php echo $row['stock_quatity']; ?></td>
+                        <td><?php echo $row['supplier_id']; ?></td>
+                        <td><?php echo $row['company_price']; ?></td>
+                        <td><?php echo $row['selling_price']; ?></td>
+                        <td><?php echo $row['category']; ?></td>
+                        <td><?php echo $row['date']; ?></td>
+                        <td><?php echo $row['expire_date']; ?></td>
                         <td>
-                            <a href="#" class="table-actions-button ic-table-edit"></a>
-                            <a href="#" class="table-actions-button ic-table-delete"></a>
+                            <a href="update_stock.php?sid=<?php echo $row['id']; ?>&table=stock_details"
+                               class="table-actions-button ic-table-edit">
+                            </a>
+                            <a onclick="return confirmSubmit()"
+                               href="delete.php?id=<?php echo $row['id']; ?>&table=stock_details"
+                               class="table-actions-button ic-table-delete">
+                            </a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Book</td>
-                        <td>4564</td>
-                        <td>1/8/2016</td>
-                        <td>Md. Tutul</td>
-                        <td>5465</td>
-                        <td>5465</td>
-
-                        <td>
-                            <a href="#" class="table-actions-button ic-table-edit"></a>
-                            <a href="#" class="table-actions-button ic-table-delete"></a>
-                        </td>
-                    </tr>
-
+                    <?php  } ?>
                     </tbody>
                 </table>
                   </div>
@@ -102,4 +107,11 @@
 
 
 
-<?php include("master_foot.php"); ?>
+<?php include("assets/js.php"); ?>
+<script>
+    $(document).ready(function () {
+        $('li').children('.stock-tab').addClass('active-tab');
+    });
+</script>
+</body>
+</html>

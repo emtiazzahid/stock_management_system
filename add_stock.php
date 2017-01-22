@@ -3,6 +3,20 @@
 <?php
 $query = "SELECT supplier_name FROM supplier_details ORDER by supplier_name ASC";
 $suppliers = $db->query($query);
+
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $contact1 = $_POST['contact1'];
+    $contact2= $_POST['contact2'];
+    $address= $_POST['address'];
+    $balance= $_POST['balance'];
+
+    $query  = "INSERT into stock_details (stock_id, stock_name, stock_quatity,supplier_contact2,balance)
+              VALUES ('$name','$address',  '$contact1','$contact2','$balance')";
+    $db->execute($query);
+    header('Location: view_stock.php');
+}
+
 ?>
 <div class="container-fluid">
     <div class="row">

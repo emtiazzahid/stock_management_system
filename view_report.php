@@ -38,7 +38,7 @@
                                 <tr>
                                     <td><strong>Sales Report </strong></td>
                                     <td>From</td>
-                                    <td><input class="datepicker" data-date-format="mm/dd/yyyy"></td>
+                                    <td><input  class="datepicker" data-date-format="mm/dd/yyyy"></td>
                                     <td>To</td>
                                     <td><input class="datepicker" data-date-format="mm/dd/yyyy">
                                     </td>
