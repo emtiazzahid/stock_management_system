@@ -17,9 +17,14 @@
 <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
 <script src="assets/packages/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="js/date_pic/jquery.date_input.js"></script>
 
 
-
+<script>
+    $(document).ready(function () {
+        $('#from_purchase_date').jdPicker();
+    });
+</script>
 <!-- script for tab in content of page -->
 <script>
 $('#myTabs a').click(function (e) {

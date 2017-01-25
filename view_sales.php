@@ -6,16 +6,16 @@
             <div class="panel panel-default">
               <div class="panel-heading epanel">Sales</div>
               <div class="panel-body">
-              <nav class="navbar navbar-default sidebar" role="navigation">
-                <div class="navbar-header">   
-                </div>
-                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                        <li><a href="add_sales.php">Add Sales</a></li>
-                        <li><a href="view_sales.php">View Sales</a></li>
-                  </ul>
-                </div>
-            </nav>
+                  <nav class="navbar navbar-default sidebar" role="navigation">
+                      <div class="navbar-header">
+                      </div>
+                      <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                          <ul class="nav navbar-nav">
+                                <li><a href="add_sales.php">Add Sales</a></li>
+                                <li class="active"><a href="view_sales.php">View Sales</a></li>
+                          </ul>
+                      </div>
+                  </nav>
               </div>
             </div>
         </div>
@@ -92,4 +92,12 @@
     </div>
 </div>
 
-<?php include("master_foot.php"); ?>
+
+<?php include("assets/js.php"); ?>
+<script>
+    $(document).ready(function () {
+        $('li').children('.sales-tab').addClass('active-tab');
+    });
+</script>
+</body>
+</html>

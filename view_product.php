@@ -1,6 +1,4 @@
 <?php include("master_head.php"); ?>
-
-
 <div class="container-fluid">
     <div class="row">
            <div class="col-md-2">
@@ -13,7 +11,7 @@
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                       <li><a href="add_stock.php">Add Stock/Product</a></li>
-                      <li><a href="view_product.php">View Stock/Product</a></li>
+                      <li class="active"><a href="view_product.php">View Stock/Product</a></li>
                       <li><a href="add_category.php">Add Stock Category</a></li>
                       <li><a href="view_category.php">view Stock Category</a></li>
                       <li><a href="view_stock_availability.php">view Stock Available</a></li>
@@ -77,7 +75,7 @@
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['stock_id']; ?></td>
                         <td><?php echo $row['stock_name']; ?></td>
-                        <td><?php echo $row['stock_quatity']; ?></td>
+                        <td><?php echo $row['stock_quantity']; ?></td>
                         <td><?php echo $row['supplier_id']; ?></td>
                         <td><?php echo $row['company_price']; ?></td>
                         <td><?php echo $row['selling_price']; ?></td>
@@ -96,7 +94,7 @@
                     </tr>
                     <?php  } ?>
                     </tbody>
-                </table>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -105,8 +103,6 @@
     </div>
 </div>
 
-
-
 <?php include("assets/js.php"); ?>
 <script>
     $(document).ready(function () {
@@ -114,4 +110,5 @@
     });
 </script>
 </body>
+
 </html>

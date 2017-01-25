@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
                         </div>
                         <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li><a href="add_supplier.php">Add Supplier</a></li>
+                                <li class="active"><a href="add_supplier.php">Add Supplier</a></li>
                                 <li><a href="view_supplier.php">View Supplier</a></li>
                             </ul>
                         </div>

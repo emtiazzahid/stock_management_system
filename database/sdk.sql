@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2017 at 08:58 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: Jan 25, 2017 at 12:42 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `category_details` (
   `id` int(10) UNSIGNED NOT NULL,
   `category_name` varchar(120) NOT NULL,
-  `category_description` varchar(250) NOT NULL
+  `category_description` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -37,12 +37,13 @@ CREATE TABLE `category_details` (
 --
 
 INSERT INTO `category_details` (`id`, `category_name`, `category_description`) VALUES
-(20, 'electronics', 'Boll Pen'),
+(20, 'electronic', ''),
 (21, 'computer', 'CricleClock'),
 (22, 'education', 'Note Book'),
 (23, 'parts', 'HB Pencil'),
-(24, 'fasion', 'Instrument Box'),
-(25, 'clothes', 'Rubber Ball');
+(25, 'clothes', 'Rubber Ball'),
+(26, 'Tobacco', ''),
+(27, 'Books', '');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,7 @@ CREATE TABLE `customer_details` (
 --
 
 INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `balance`) VALUES
-(8, 'Shorfuddin', 'ecb', '7787876786', '989898988', 0),
+(8, 'Shorfuddin', 'ecb', '7787876786', '989898988', 80),
 (9, 'babu', 'dhaka', '7787876786', '989898988', 0),
 (10, 'dipa', 'mirpur', '7787876786', '989898988', 0),
 (11, 'babu uddin', 'chitagong', '7787876786', '989898988', 0),
@@ -110,26 +111,27 @@ CREATE TABLE `stock_details` (
   `id` int(10) UNSIGNED NOT NULL,
   `stock_id` varchar(120) NOT NULL,
   `stock_name` varchar(120) NOT NULL,
-  `stock_quatity` int(11) NOT NULL,
+  `stock_quantity` int(11) NOT NULL,
   `supplier_id` varchar(250) NOT NULL,
   `company_price` decimal(10,2) NOT NULL,
   `selling_price` decimal(10,2) NOT NULL,
   `category` varchar(120) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `expire_date` datetime NOT NULL,
-  `uom` varchar(120) NOT NULL
+  `expire_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stock_details`
 --
 
-INSERT INTO `stock_details` (`id`, `stock_id`, `stock_name`, `stock_quatity`, `supplier_id`, `company_price`, `selling_price`, `category`, `date`, `expire_date`, `uom`) VALUES
-(34, 'SD1', 'Pen', 0, 'babu', '9.00', '10.00', 'education', '2016-12-09 15:17:07', '0000-00-00 00:00:00', ''),
-(35, 'SD35', 'Book', 0, 'babu', '200.00', '250.00', 'education', '2016-12-09 15:13:42', '0000-00-00 00:00:00', ''),
-(36, 'SD36', 'Money Bag', 0, 'saddam', '7.00', '10.00', 'parts', '2016-12-09 15:13:48', '0000-00-00 00:00:00', ''),
-(37, 'SD37', 'Mobile', 0, 'saddam', '1000.00', '1100.00', 'electronics', '2016-12-09 15:13:54', '0000-00-00 00:00:00', ''),
-(38, 'SD38', 'Mouse', 0, 'saddam', '500.00', '550.00', 'computer', '2016-12-09 15:13:58', '0000-00-00 00:00:00', '');
+INSERT INTO `stock_details` (`id`, `stock_id`, `stock_name`, `stock_quantity`, `supplier_id`, `company_price`, `selling_price`, `category`, `date`, `expire_date`) VALUES
+(34, 'SD1', 'Pen', 0, 'babu', '9.00', '11.00', 'educations', '2017-01-22 09:03:34', '0000-00-00 00:00:00'),
+(35, 'SD35', 'Book', 0, 'babu', '200.00', '250.00', 'education', '2016-12-09 15:13:42', '0000-00-00 00:00:00'),
+(36, 'SD36', 'Money Bag', 0, 'saddam', '7.00', '101.00', 'parts', '2017-01-22 10:57:24', '0000-00-00 00:00:00'),
+(37, 'SD37', 'Mobile', 0, 'saddam', '1000.00', '1100.00', 'electronics', '2016-12-09 15:13:54', '0000-00-00 00:00:00'),
+(38, 'SD38', 'Mouse', 0, 'saddam', '500.00', '550.00', 'computer', '2016-12-09 15:13:58', '0000-00-00 00:00:00'),
+(39, 'SD12', 'Keyboard', 0, '', '250.00', '300.00', 'computer', '2017-01-25 05:56:27', '2017-01-25 00:00:00'),
+(40, 'SD45', 'Mouse', 40, 'labib', '300.00', '350.00', 'computer', '2017-01-25 06:02:36', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -274,8 +276,8 @@ CREATE TABLE `supplier_details` (
   `supplier_name` varchar(200) NOT NULL,
   `supplier_address` varchar(500) NOT NULL,
   `supplier_contact1` varchar(100) NOT NULL,
-  `supplier_contact2` varchar(100) NOT NULL,
-  `balance` int(11) NOT NULL
+  `supplier_contact2` varchar(100) DEFAULT NULL,
+  `balance` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -283,10 +285,10 @@ CREATE TABLE `supplier_details` (
 --
 
 INSERT INTO `supplier_details` (`id`, `supplier_name`, `supplier_address`, `supplier_contact1`, `supplier_contact2`, `balance`) VALUES
-(37, 'Rahul', '#123, dhaka, bangladesh ', '7787876786', '89798', 3000),
+(37, 'Rahul', '#123, dhaka', '7787876786', '89798', 3000),
 (38, 'labib', '#124, mirpur, bangladesh ', '7787876786', '9539126325', 2500),
-(39, 'jidan', '#126, ECB , Mipur , Dhaka, Bangeladesh', '7787876786', '9539126325', 1500),
-(44, 'saddam', '#126, Dhaka', '7787876786', '9539126325', 1000),
+(39, 'jidan', '#126, ECB , Mipur , Dhaka', '7787876786', '9539126325', 1500),
+(44, 'saddam', '#126, Dhaka', '7787876786', '9539126325', 2000),
 (49, 'saddam', '#125, Dhaka 1216', '777777777777', '6463468465465', 25000);
 
 -- --------------------------------------------------------
@@ -403,7 +405,7 @@ ALTER TABLE `uom_details`
 -- AUTO_INCREMENT for table `category_details`
 --
 ALTER TABLE `category_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `customer_details`
 --
@@ -418,7 +420,7 @@ ALTER TABLE `stock_avail`
 -- AUTO_INCREMENT for table `stock_details`
 --
 ALTER TABLE `stock_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 --
 -- AUTO_INCREMENT for table `stock_entries`
 --

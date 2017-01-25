@@ -1,218 +1,103 @@
+<?php include("master_head.php"); ?>
+
 <?php
-include_once("init.php");
+if (isset($_GET['sid']))
+    $id = $_GET['sid'];
+
+$line = $db->queryUniqueObject("SELECT * FROM category_details WHERE id = $id");
+?>
+
+<?php
+if (isset($_POST['update'])) {
+    $category_name = trim(mysqli_real_escape_string($db->connection, $_POST['category_name']));
+    $category_description = trim(mysqli_real_escape_string($db->connection, $_POST['category_description']));
+
+    $query = "UPDATE category_details SET category_name = '$category_name', category_description = '$category_description'
+    WHERE id = $id";
+
+    $db->execute($query);
+    header('Location: view_category.php');
+}
 
 ?>
-<!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>POSNIC - Update Category</title>
-
-    <!-- Stylesheets -->
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Optimize for mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <!-- jQuery & JS files -->
-    <?php include_once("tpl/common_js.php"); ?>
-    <script src="js/script.js"></script>
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#form1").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    address: {
-                        minlength: 3,
-                        maxlength: 500
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter a Category Name",
-                        minlength: "Category Name must consist of at least 3 characters"
-                    },
-                    address: {
-                        minlength: "Category Discription must be at least 3 characters long",
-                        maxlength: "Category Discription must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
-
-</head>
-<body>
-
-<!-- TOP BAR -->
-<?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
-<div id="header-with-tabs">
-
-    <div class="page-full-width cf">
-
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class="sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="active-tab stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
-        </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="<?php if (isset($_SESSION['logo'])) {
-                echo "upload/" . $_SESSION['logo'];
-            } else {
-                echo "upload/posnic.png";
-            } ?>" alt="Point of Sale"/></a>
-
-    </div>
-    <!-- end full-width -->
-
-</div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
-<div id="content">
-
-    <div class="page-full-width cf">
-
-        <div class="side-menu fl">
-
-            <h3>Stock Category Management</h3>
-            <ul>
-                <li><a href="add_stock.php">Add Stock/Product</a></li>
-                <li><a href="view_product.php">View Stock/Product</a></li>
-                <li><a href="add_category.php">Add Stock Category</a></li>
-                <li><a href="view_category.php">view Stock Category</a></li>
-            </ul>
-
-        </div>
-        <!-- end side-menu -->
-
-        <div class="side-content fr">
-
-            <div class="content-module">
-
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Update Supplier</h3>
-                    <span class="fr expand-collapse-text">Click to collapse</span>
-                    <span class="fr expand-collapse-text initial-expand">Click to expand</span>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading epanel">Stock/Products</div>
+                    <div class="panel-body">
+                        <nav class="navbar navbar-default sidebar" role="navigation">
+                            <div class="navbar-header">
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="add_stock.php">Add Stock/Product</a></li>
+                                    <li><a href="view_product.php">View Stock/Product</a></li>
+                                    <li><a href="add_category.php">Add Stock Category</a></li>
+                                    <li class="active"><a href="view_category.php">view Stock Category</a></li>
+                                    <li><a href="view_stock_availability.php">view Stock Available</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
-                <!-- end content-module-heading -->
-
-                <div class="content-module-main cf">
-                    <form name="form1" method="post" id="form1" action="">
-                        <p><strong>Add Stock </strong> - Add New ( Control + 3)</p>
-                        <table class="form" border="0" cellspacing="0" cellpadding="0">
-                            <?php
-                            if (isset($_POST['id'])) {
-
-                                $id = mysqli_real_escape_string($db->connection, $_POST['id']);
-                                $name = trim(mysqli_real_escape_string($db->connection, $_POST['name']));
-                                $address = trim(mysqli_real_escape_string($db->connection, $_POST['address']));
-
-
-                                if ($db->query("UPDATE category_details  SET category_name='$name',category_description='$address' where id='$id'"))
-                                    echo "<br><font color=green size=+1 > [ $name ] Supplier Details Updated!</font>";
-                                else
-                                    echo "<br><font color=red size=+1 >Problem in Updation !</font>";
-
-
-                            }
-
-                            ?>
-                            <?php
-                            if (isset($_GET['sid']))
-                                $id = $_GET['sid'];
-
-                            $line = $db->queryUniqueObject("SELECT * FROM category_details WHERE id=$id");
-                            ?>
-                            <form name="form1" method="post" id="form1" action="">
-                                <input name="id" type="hidden" value="<?php echo $_GET['sid']; ?>">
-                                <tr>
-                                    <td>Name</td>
-                                    <td><input name="name" type="text" id="name" maxlength="200"
-                                               class="round default-width-input"
-                                               value="<?php echo $line->category_name; ?> "/></td>
-
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>Address</td>
-                                    <td><textarea name="address" cols="15"
-                                                  class="round full-width-textarea"><?php echo $line->category_description; ?></textarea>
-                                    </td>
-
-                                </tr>
-
-
-                                <tr>
-                                    <td>
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        <input class="button round blue image-right ic-add text-upper" type="submit"
-                                               name="Submit" value="Save">
-                                        (Control + S)
-                                    </td>
-                                    <td align="right"><input class="button round red   text-upper" type="reset"
-                                                             name="Reset" value="Reset"></td>
-
-                                </tr>
-                        </table>
-                    </form>
-
-
-                </div>
-                <!-- end content-module-main -->
-
-
             </div>
-            <!-- end content-module -->
-
-
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active">
+                                <a href="#update_category" role="tab" data-toggle="tab">Update Category</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="update_category">
+                                <form action="" method="post">
+                                    <div class="col-md-8">
+                                        <table class="table">
+                                            <tr>
+                                                <td class="col-md-2">
+                                                    *Name:
+                                                </td>
+                                                <td class="col-md-6">
+                                                    <input type="text" class="form-control" name="category_name" id="category_name" value="<?php echo $line->category_name; ?>">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-2">
+                                                    Description
+                                                </td>
+                                                <td class="col-md-6">
+                                                    <input type="text"  class="form-control" name="category_description" id="category_description" value="<?php echo $line->category_description; ?>">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <button type="submit" name="update" class="btn btn-info">Update</button>
+                                                </td>
+                                                <td>
+                                                    <button type="clear" name="clear" class="btn btn-danger">Clear</button>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- end full-width -->
-
     </div>
-    <!-- end content -->
 
-
-    <!-- FOOTER -->
-    <div id="footer">
-        <p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.
-        </p>
-
-    </div>
-    <!-- end footer -->
-
+<?php include("assets/js.php"); ?>
+<script>
+    $(document).ready(function () {
+        $('li').children('.stock-tab').addClass('active-tab');
+    });
+</script>
 </body>
 </html>
