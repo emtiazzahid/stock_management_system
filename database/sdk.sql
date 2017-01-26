@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2017 at 12:42 PM
+-- Generation Time: Jan 26, 2017 at 12:38 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -57,25 +57,26 @@ CREATE TABLE `customer_details` (
   `customer_address` varchar(500) NOT NULL,
   `customer_contact1` varchar(100) NOT NULL,
   `customer_contact2` varchar(100) NOT NULL,
-  `balance` int(11) NOT NULL
+  `balance` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer_details`
 --
 
-INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `balance`) VALUES
-(8, 'Shorfuddin', 'ecb', '7787876786', '989898988', 80),
-(9, 'babu', 'dhaka', '7787876786', '989898988', 0),
-(10, 'dipa', 'mirpur', '7787876786', '989898988', 0),
-(11, 'babu uddin', 'chitagong', '7787876786', '989898988', 0),
-(12, 'rofik', 'dhaka', '7787876786', '989898988', 0),
-(13, 'jabed', 'dhaka', '7787876786', '989898988', 80),
-(14, 'rasel', 'dhaka', '7787876786', '989898988', 6240),
-(15, 'shorif', 'dhaka', '7787876786', '989898988', 0),
-(16, 'jerin', 'mirpur', '7787876786', '989898988', 1810),
-(17, 'zahid', 'mirpur', '7787876786', '989898988', 0),
-(18, 'Shorfuddin Babu', 'mirpur', '654654', '65454', 0);
+INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `balance`, `created_at`) VALUES
+(8, 'Shorfuddin', 'ecb', '66666666', '88888888', 100, '2017-01-26 04:53:11'),
+(10, 'dipa', 'mirpur', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
+(11, 'babu uddin', 'chitagong', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
+(12, 'rofik', 'dhaka', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
+(13, 'jabed', 'dhaka', '7787876786', '989898988', 80, '2017-01-26 04:53:11'),
+(14, 'rasel', 'dhaka', '7787876786', '989898988', 6240, '2017-01-26 04:53:11'),
+(15, 'shorif', 'dhaka', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
+(16, 'jerin', 'mirpur', '7787876786', '989898988', 1810, '2017-01-26 04:53:11'),
+(17, 'zahid', 'mirpur', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
+(18, 'Shorfuddin Babu', 'mirpur', '654654', '65454', 0, '2017-01-26 04:53:11'),
+(19, 'Emtiaz', 'Mirpur, Dhaka 1216', '0154654', '01654654', 50000, '2017-01-26 04:56:03');
 
 -- --------------------------------------------------------
 
@@ -125,13 +126,14 @@ CREATE TABLE `stock_details` (
 --
 
 INSERT INTO `stock_details` (`id`, `stock_id`, `stock_name`, `stock_quantity`, `supplier_id`, `company_price`, `selling_price`, `category`, `date`, `expire_date`) VALUES
-(34, 'SD1', 'Pen', 0, 'babu', '9.00', '11.00', 'educations', '2017-01-22 09:03:34', '0000-00-00 00:00:00'),
-(35, 'SD35', 'Book', 0, 'babu', '200.00', '250.00', 'education', '2016-12-09 15:13:42', '0000-00-00 00:00:00'),
-(36, 'SD36', 'Money Bag', 0, 'saddam', '7.00', '101.00', 'parts', '2017-01-22 10:57:24', '0000-00-00 00:00:00'),
-(37, 'SD37', 'Mobile', 0, 'saddam', '1000.00', '1100.00', 'electronics', '2016-12-09 15:13:54', '0000-00-00 00:00:00'),
-(38, 'SD38', 'Mouse', 0, 'saddam', '500.00', '550.00', 'computer', '2016-12-09 15:13:58', '0000-00-00 00:00:00'),
+(34, 'SD1', 'Pen', 50, 'babu', '9.00', '11.00', 'educations', '2017-01-26 09:20:06', '0000-00-00 00:00:00'),
+(35, 'SD35', 'Book', 40, 'babu', '200.00', '250.00', 'education', '2017-01-26 09:20:10', '0000-00-00 00:00:00'),
+(36, 'SD36', 'Money Bag', 30, 'saddam', '7.00', '101.00', 'parts', '2017-01-26 09:20:13', '0000-00-00 00:00:00'),
+(37, 'SD37', 'Mobile', 20, 'saddam', '1000.00', '1100.00', 'electronics', '2017-01-26 09:20:16', '0000-00-00 00:00:00'),
+(38, 'SD38', 'Mouse', 70, 'saddam', '500.00', '550.00', 'computer', '2017-01-26 09:20:18', '0000-00-00 00:00:00'),
 (39, 'SD12', 'Keyboard', 0, '', '250.00', '300.00', 'computer', '2017-01-25 05:56:27', '2017-01-25 00:00:00'),
-(40, 'SD45', 'Mouse', 40, 'labib', '300.00', '350.00', 'computer', '2017-01-25 06:02:36', '0000-00-00 00:00:00');
+(40, 'SD45', 'Mouse', 40, 'labib', '300.00', '350.00', 'computer', '2017-01-25 06:02:36', '0000-00-00 00:00:00'),
+(41, 'SD', '', 0, '', '0.00', '0.00', '', '2017-01-26 10:55:48', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -200,7 +202,7 @@ CREATE TABLE `stock_sales` (
   `dis_amount` decimal(10,0) DEFAULT NULL,
   `grand_total` decimal(10,0) DEFAULT NULL,
   `due` date DEFAULT NULL,
-  `mode` varchar(250) DEFAULT NULL,
+  `payment_method` varchar(250) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   `count1` int(11) DEFAULT NULL,
   `billnumber` varchar(120) NOT NULL
@@ -210,7 +212,7 @@ CREATE TABLE `stock_sales` (
 -- Dumping data for table `stock_sales`
 --
 
-INSERT INTO `stock_sales` (`id`, `transactionid`, `stock_name`, `selling_price`, `quantity`, `amount`, `date`, `username`, `customer_id`, `subtotal`, `payment`, `balance`, `discount`, `dis_amount`, `grand_total`, `due`, `mode`, `description`, `count1`, `billnumber`) VALUES
+INSERT INTO `stock_sales` (`id`, `transactionid`, `stock_name`, `selling_price`, `quantity`, `amount`, `date`, `username`, `customer_id`, `subtotal`, `payment`, `balance`, `discount`, `dis_amount`, `grand_total`, `due`, `payment_method`, `description`, `count1`, `billnumber`) VALUES
 (20, 'SD2635', 'Pen', '10.00', '10.00', '100.00', '2013-08-15', 'admin', 'Shorfuddin', '90.00', '10.00', '80.00', '10', '10', '100', '1970-01-01', 'cheque', 'uuuoiuo', 1, 'BILL-126'),
 (21, 'SD264', 'Book', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'babu', '990.00', '100.00', '890.00', '0', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
 (22, 'SD265', 'Mobile', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'dipa', '990.00', '100.00', '890.00', '0', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
@@ -410,7 +412,7 @@ ALTER TABLE `category_details`
 -- AUTO_INCREMENT for table `customer_details`
 --
 ALTER TABLE `customer_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `stock_avail`
 --
@@ -420,7 +422,7 @@ ALTER TABLE `stock_avail`
 -- AUTO_INCREMENT for table `stock_details`
 --
 ALTER TABLE `stock_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `stock_entries`
 --

@@ -1,6 +1,5 @@
 <?php include("master_head.php"); ?>
 
-
 <div class="container-fluid">
     <div class="row">
            <div class="col-md-2">
@@ -13,7 +12,7 @@
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                         <li><a href="add_customer.php">Add Customer</a></li>
-                        <li><a href="view_customers.php">View Customers</a></li>
+                        <li class="active"><a href="view_customers.php">View Customers</a></li>
                   </ul>
                 </div>
             </nav>
@@ -40,6 +39,7 @@
                             <th>Customer Address Id</th>
                             <th>Contact</th>
                             <th>Balance</th>
+                            <th>Create at</th>
                             <th>Edit /Delete</th>
                         </tr>
                         </thead>
@@ -50,6 +50,7 @@
                             <th>Customer Address Id</th>
                             <th>Contact</th>
                             <th>Balance</th>
+                            <th>Create at</th>
                             <th>Edit /Delete</th>
                         </tr>
                         </tfoot>
@@ -65,12 +66,13 @@
                                 <td> <?php echo $row['customer_address']; ?></td>
                                 <td> <?php echo $row['customer_contact1']; ?></td>
                                 <td> <?php echo $row['balance']; ?></td>
+                                <td> <?php echo $row['created_at']; ?></td>
                                 <td>
-                                    <a href="update_sales.php?sid=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
+                                    <a href="update_customer_details.php?sid=<?php echo $row['id']; ?>&table=customer_details&return=view_customers.php"
                                        class="table-actions-button ic-table-edit">
                                     </a>
                                     <a onclick="return confirmSubmit()"
-                                       href="delete.php?id=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
+                                       href="delete.php?id=<?php echo $row['id']; ?>&table=customer_details&return=view_customers.php"
                                        class="table-actions-button ic-table-delete"></a>
                                 </td>
                             </tr>
@@ -88,4 +90,11 @@
 </div>
 
 
-<?php include("master_foot.php"); ?>
+<?php include("assets/js.php"); ?>
+<script>
+    $(document).ready(function () {
+        $('li').children('.customers-tab').addClass('active-tab');
+    });
+</script>
+</body>
+</html>

@@ -1,251 +1,115 @@
+<?php include("master_head.php"); ?>
+
 <?php
-include_once("init.php");
+
+if(isset($_POST['submit'])){
+    $customer_name = $_POST['customer_name'];
+    $customer_address = $_POST['customer_address'];
+    $customer_contact1= $_POST['customer_contact1'];
+    $customer_contact2	 = $_POST['customer_contact2'];
+    $balance = $_POST['balance'];
+
+    $query  = "INSERT into customer_details (customer_name, customer_address, customer_contact1,customer_contact2,balance)
+              VALUES ('$customer_name','$customer_address', '$customer_contact1','$customer_contact2','$balance')";
+    $db->execute($query);
+    header('Location: view_customers.php');
+}
 
 ?>
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>SDK - Add Customer</title>
-
-    <!-- Stylesheets -->
-
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <?php include_once("tpl/common_js.php"); ?>
-    <script src="js/script.js"></script>
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#form1").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    address: {
-                        minlength: 3,
-                        maxlength: 500
-                    },
-                    contact1: {
-                        minlength: 3,
-                        maxlength: 20
-                    },
-                    contact2: {
-                        minlength: 3,
-                        maxlength: 20
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter a Customer Name",
-                        minlength: "Customer must consist of at least 3 characters"
-                    },
-                    address: {
-                        minlength: "Customer Address must be at least 3 characters long",
-                        maxlength: "Customer Address must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
-
-</head>
-<body>
-
-<!-- TOP BAR -->
-<?php include_once("tpl/top_bar.php"); ?>
-<!-- end top-bar -->
-
-
-<!-- HEADER -->
-<div id="header-with-tabs">
-
-    <div class="page-full-width cf">
-
-        <ul id="tabs" class="fl">
-            <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class=" sales-tab">Sales</a></li>
-            <li><a href="view_customers.php" class="active-tab customers-tab">Customers</a></li>
-            <li><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
-            <li><a href="view_supplier.php" class="  supplier-tab">Supplier</a></li>
-            <li><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li><a href="view_payments.php" class="payment-tab">Payments / Outstandings</a></li>
-            <li><a href="view_report.php" class="report-tab">Reports</a></li>
-        </ul>
-        <!-- end tabs -->
-
-        <!-- Change this image to your own company's logo -->
-        <!-- The logo will automatically be resized to 30px height. -->
-        <a href="#" id="company-branding-small" class="fr"><img src="upload/posnic.png"/></a>
-
-    </div>
-    <!-- end full-width -->
-
-</div>
-<!-- end header -->
-
-
-<!-- MAIN CONTENT -->
-<div id="content">
-
-    <div class="page-full-width cf">
-
-        <div class="side-menu fl">
-
-            <h3>Customers Management</h3>
-            <ul>
-                <li><a href="add_customer.php">Add Customer</a></li>
-                <li><a href="view_customers.php">View Customers</a></li>
-            </ul>
-
-        </div>
-        <!-- end side-menu -->
-
-        <div class="side-content fr">
-
-            <div class="content-module">
-
-                <div class="content-module-heading cf">
-
-                    <h3 class="fl">Add Customer</h3>
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading epanel">Customer</div>
+                <div class="panel-body">
+                    <nav class="navbar navbar-default sidebar" role="navigation">
+                        <div class="navbar-header">
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="add_customer.php">Add Customer</a></li>
+                                <li><a href="view_customers.php">View Customers</a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-                <!-- end content-module-heading -->
-
-                <div class="content-module-main cf">
-
-
-                    <?php
-
-                    if (isset($_POST['name'])) {
-                        $_POST = $gump->sanitize($_POST);
-                        $gump->validation_rules(array(
-                            'name' => 'required|max_len,100|min_len,3',
-                            'address' => 'max_len,200',
-                            'contact1' => 'alpha_numeric|max_len,20',
-                            'contact2' => 'alpha_numeric|max_len,20'
-                        ));
-
-                        $gump->filter_rules(array(
-                            'name' => 'trim|sanitize_string|mysqli_escape',
-                            'address' => 'trim|sanitize_string|mysqli_escape',
-                            'contact1' => 'trim|sanitize_string|mysqli_escape',
-                            'contact2' => 'trim|sanitize_string|mysqli_escape'
-                        ));
-
-                        $validated_data = $gump->run($_POST);
-                        $name = "";
-                        $address = "";
-                        $contact1 = "";
-                        $contact2 = "";
-
-                        if ($validated_data === false) {
-                            echo $gump->get_readable_errors(true);
-                        } else {
-
-
-                            $name = mysqli_real_escape_string($db->connection, $_POST['name']);
-                            $address = mysqli_real_escape_string($db->connection, $_POST['address']);
-                            $contact1 = mysqli_real_escape_string($db->connection, $_POST['contact1']);
-                            $contact2 = mysqli_real_escape_string($db->connection, $_POST['contact2']);
-
-                            $count = $db->countOf("customer_details", "customer_name='$name'");
-                            if ($count == 1) {
-                                echo "<div class='error-box round'>Dublicat Entry. Please Verify</div>";
-                            } else {
-
-                                if ($db->query("insert into customer_details values(NULL,'$name','$address','$contact1','$contact2',0)"))
-                                    echo "<div class='confirmation-box round'>[ $name ] Customer Details Added !</div>";
-                                else
-                                    echo "<div class='error-box round'>Problem in Adding !</div>";
-
-                            }
-                        }
-                    }
-
-                    ?>
-
-                    <form name="form1" method="post" id="form1" action="">
-
-                        <p><strong>Add Customer Details </strong> - Add New ( Control +A)</p>
-                        <table class="form" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td><span class="man">*</span>Name:</td>
-                                <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
-                                           maxlength="200" class="round default-width-input"
-                                           value="<?php echo isset($name) ? $name : ''; ?>"/></td>
-                                <td>Contact 1</td>
-                                <td><input name="contact1" placeholder="ENTER YOUR ADDRESS contact1" type="text"
-                                           id="buyingrate" maxlength="20" class="round default-width-input"
-                                           value="<?php echo isset($contact1) ? $contact1 : ''; ?>"/></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td><textarea name="address" placeholder="ENTER YOUR ADDRESS" cols="15"
-                                              class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
-                                </td>
-                                <td>Contact 2</td>
-                                <td><input name="contact2" placeholder="ENTER YOUR contact2" type="text"
-                                           id="sellingrate" maxlength="20" class="round default-width-input"
-                                           value="<?php echo isset($contact2) ? $contact2 : ''; ?>"/></td>
-
-                            </tr>
-
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    &nbsp;
-                                </td>
-                                <td>
-                                    <input class="button round blue image-right ic-add text-upper" type="submit"
-                                           name="Submit" value="Add">
-                                    (Control + S)
-                                <td>
-                                    &nbsp;
-                                </td>
-                                <td align="right"><input class="button round red text-upper" type="reset" name="Reset"
-                                                         value="Reset"></td>
-                            </tr>
-                        </table>
-                    </form>
-
-
-                </div>
-                <!-- end content-module-main -->
-
-
             </div>
-            <!-- end content-module -->
-
-
         </div>
-        <!-- end full-width -->
-
+        <div class="col-md-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active">
+                            <a href="#add_cutomers" role="tab" data-toggle="tab">Add Customers</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="add_cutomers">
+                            <form action="" method="post">
+                                <div class="col-md-8">
+                                    <table class="table">
+                                        <tr>
+                                            <td class="col-md-2">
+                                                Customer Name:
+                                            </td>
+                                            <td class="col-md-3">
+                                                <input type="text"  class="form-control" name="customer_name" id="customer_name" placeholder="">
+                                            </td>
+                                            <td class="col-md-2">
+                                                Customer Address:
+                                            </td>
+                                            <td class="col-md-3">
+                                                <textarea class="form-control" name="customer_address" id="customer_address"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">
+                                                Customer Contact 1:
+                                            </td>
+                                            <td class="col-md-3">
+                                                <input type="text"  class="form-control" name="customer_contact1" id="customer_contact1">
+                                            </td>
+                                            <td class="col-md-2">
+                                                Customer Contact 2:
+                                            </td>
+                                            <td class="col-md-3">
+                                                <input type="text" class="form-control" name="customer_contact2" id="customer_contact2">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">
+                                                Balance:
+                                            </td>
+                                            <td class="col-md-3">
+                                                <input type="text"  class="form-control" name="balance" id="balance">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <button type="submit" name="submit" class="btn btn-info">Add+</button>
+                                            </td>
+                                            <td colspan="2">
+                                                <button type="clear" name="clear" class="btn btn-danger">Clear</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- end content -->
+</div>
 
-
-    <!-- FOOTER -->
-    <div id="footer">
-
-    </div>
-    <!-- end footer -->
-
+<?php include("assets/js.php"); ?>
+<script>
+    $(document).ready(function () {
+        $('li').children('.customers-tab').addClass('active-tab');
+    });
+</script>
 </body>
 </html>
