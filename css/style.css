@@ -752,3 +752,6 @@ div#footer {
 .my_table tr td{
     width: 80px;
 }
+.show_hide{
+	display: none;
+}

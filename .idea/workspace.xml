@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8506d62-eaad-448f-ae7c-38c977d46ff2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getAllCustomer.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getAllCustomerDetails.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getStockDetails.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/add_customer.php" afterPath="$PROJECT_DIR$/add_customer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getAllStockId2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getAllStockId3.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getAllStockId4.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getAllStockId5.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getStockDetails2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getStockDetails3.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getStockDetails4.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ajax_request_files/getStockDetails5.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/add_sales.php" afterPath="$PROJECT_DIR$/add_sales.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax_request_files/getAllStockId.php" afterPath="$PROJECT_DIR$/ajax_request_files/getAllStockId.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css.php" afterPath="$PROJECT_DIR$/assets/css.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/estyle.css" afterPath="$PROJECT_DIR$/css/estyle.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/update_customer_details.php" afterPath="$PROJECT_DIR$/update_customer_details.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view_customers.php" afterPath="$PROJECT_DIR$/view_customers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="POSNIC-1.03-master.iws" />
@@ -36,16 +39,44 @@
       <file leaf-file-name="add_sales.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/add_sales.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.2450805">
-              <caret line="238" column="12" selection-start-line="238" selection-start-column="12" selection-end-line="238" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.5788531">
+              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1485430613967" expanded="true" signature="54:123" placeholder="SELECT suppl..supplier_details..." />
-                <marker date="1485430613967" expanded="true" signature="169:238" placeholder="SELECT categ..category_details..." />
-                <marker date="1485430613967" expanded="true" signature="663:948" placeholder="INSERT into ..." />
-                <marker date="1485430613967" expanded="true" signature="4134:4189" placeholder="..." />
-                <marker date="1485430613967" expanded="true" signature="5553:5610" placeholder="..." />
-                <marker date="1485430613967" expanded="true" signature="17102:17121" placeholder="..." />
+                <element signature="n#script#0;n#!!top" expanded="false" />
+                <element signature="n#script#1;n#!!top" expanded="false" />
+                <element signature="n#script#2;n#!!top" expanded="false" />
+                <element signature="n#script#3;n#!!top" expanded="false" />
+                <element signature="n#script#4;n#!!top" expanded="false" />
+                <element signature="n#script#5;n#!!top" expanded="false" />
+                <element signature="n#script#6;n#!!top" expanded="false" />
+                <element signature="n#script#7;n#!!top" expanded="false" />
+                <element signature="n#script#8;n#!!top" expanded="false" />
+                <element signature="n#script#9;n#!!top" expanded="false" />
+                <element signature="n#script#10;n#!!top" expanded="false" />
+                <element signature="n#script#11;n#!!top" expanded="false" />
+                <element signature="n#script#12;n#!!top" expanded="false" />
+                <element signature="n#script#13;n#!!top" expanded="false" />
+                <element signature="n#script#14;n#!!top" expanded="false" />
+                <element signature="n#script#15;n#!!top" expanded="false" />
+                <element signature="n#script#16;n#!!top" expanded="false" />
+                <element signature="n#script#17;n#!!top" expanded="false" />
+                <marker date="1485768129463" expanded="true" signature="54:123" placeholder="SELECT suppl..supplier_details..." />
+                <marker date="1485768129463" expanded="true" signature="169:238" placeholder="SELECT categ..category_details..." />
+                <marker date="1485768129463" expanded="true" signature="2212:2495" placeholder="INSERT into ..." />
+                <marker date="1485768129463" expanded="true" signature="5697:5752" placeholder="..." />
+                <marker date="1485768129463" expanded="true" signature="7116:7173" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="getStockDetails3.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails3.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="100" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="100" />
+              <folding>
+                <marker date="1485760217349" expanded="true" signature="135:192" placeholder="SELECT * FRO..stock_details..." />
               </folding>
             </state>
           </provider>
@@ -55,7 +86,7 @@
         <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="46" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="46" />
+              <caret line="13" column="73" selection-start-line="13" selection-start-column="73" selection-end-line="13" selection-end-column="73" />
               <folding>
                 <marker date="1485425071987" expanded="true" signature="130:186" placeholder="SELECT * FRO..stock_details..." />
               </folding>
@@ -63,71 +94,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getAllStockId.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllStockId.php">
+      <file leaf-file-name="getStockDetails2.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails2.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
               <folding>
-                <marker date="1485422383045" expanded="true" signature="142:232" placeholder="SELECT stock..stock_details..." />
+                <marker date="1485760288498" expanded="true" signature="135:192" placeholder="SELECT * FRO..stock_details..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getAllCustomerDetails.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllCustomerDetails.php">
+      <file leaf-file-name="css.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="39" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="39" />
-              <folding>
-                <marker date="1485415213802" expanded="true" signature="145:230" placeholder="SELECT custo..customer_details..." />
-                <marker date="1485415213802" expanded="true" signature="145:248" placeholder="SELECT custo..customer_details..." />
-                <marker date="1485415213802" expanded="true" signature="145:256" placeholder="SELECT custo..customer_details..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="getAllCustomer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllCustomer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-              <folding>
-                <marker date="1485411455235" expanded="true" signature="152:231" placeholder="SELECT custo..customer_details..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_customer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/add_customer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="96" column="44" selection-start-line="51" selection-start-column="34" selection-end-line="96" selection-end-column="44" />
-              <folding>
-                <marker date="1485406579548" expanded="true" signature="330:551" placeholder="INSERT into ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_customers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/view_customers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header_tab.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tpl/header_tab.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="33" />
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -165,15 +148,24 @@
         <option value="$PROJECT_DIR$/add_stock.php" />
         <option value="$PROJECT_DIR$/view_sales.php" />
         <option value="$PROJECT_DIR$/assets/js.php" />
-        <option value="$PROJECT_DIR$/assets/css.php" />
         <option value="$PROJECT_DIR$/add_customer.php" />
         <option value="$PROJECT_DIR$/update_customer_details.php" />
         <option value="$PROJECT_DIR$/view_customers.php" />
         <option value="$PROJECT_DIR$/ajax_request_files/getAllCustomer.php" />
         <option value="$PROJECT_DIR$/ajax_request_files/getAllCustomerDetails.php" />
-        <option value="$PROJECT_DIR$/ajax_request_files/getAllStockId.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/css/estyle.css" />
+        <option value="$PROJECT_DIR$/assets/css.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getAllStockId2.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getAllStockId3.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getAllStockId4.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getAllStockId.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getAllStockId5.php" />
         <option value="$PROJECT_DIR$/ajax_request_files/getStockDetails.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getStockDetails5.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getStockDetails4.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getStockDetails3.php" />
+        <option value="$PROJECT_DIR$/ajax_request_files/getStockDetails2.php" />
         <option value="$PROJECT_DIR$/add_sales.php" />
       </list>
     </option>
@@ -192,8 +184,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -203,7 +194,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -219,8 +210,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -239,64 +228,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tpl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stock_management_system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ajax_request_files" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,10 +293,10 @@
     <option name="totallyTimeSpent" value="16705000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26858878" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -397,69 +332,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/add_sales.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="639" column="44" selection-start-line="639" selection-start-column="44" selection-end-line="639" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view_payments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view_sales.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="14" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view_customers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="118" column="46" selection-start-line="118" selection-start-column="46" selection-end-line="118" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view_purchase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/add_sales.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view_sales.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="143" column="23" selection-start-line="142" selection-start-column="2" selection-end-line="201" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view_product.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -630,20 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/master_head.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/master_foot.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.060822897">
@@ -651,26 +509,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24329159">
-          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tpl/header_tab.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/update_sales.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -678,7 +520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.4096603">
           <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -686,9 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="96" column="44" selection-start-line="51" selection-start-column="34" selection-end-line="96" selection-end-column="44" />
-          <folding>
-            <marker date="1485406579548" expanded="true" signature="330:551" placeholder="INSERT into ..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -696,15 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66547406">
           <caret line="102" column="82" selection-start-line="102" selection-start-column="82" selection-end-line="102" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view_customers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -712,7 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.57781756">
           <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -720,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27370304">
           <caret line="45" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -728,9 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <marker date="1485411455235" expanded="true" signature="152:231" placeholder="SELECT custo..customer_details..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -738,54 +562,166 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="39" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="39" />
-          <folding>
-            <marker date="1485415213802" expanded="true" signature="145:230" placeholder="SELECT custo..customer_details..." />
-            <marker date="1485415213802" expanded="true" signature="145:248" placeholder="SELECT custo..customer_details..." />
-            <marker date="1485415213802" expanded="true" signature="145:256" placeholder="SELECT custo..customer_details..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllStockId.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
-          <folding>
-            <marker date="1485422383045" expanded="true" signature="142:232" placeholder="SELECT stock..stock_details..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.206897">
-          <caret line="322" column="18" selection-start-line="322" selection-start-column="18" selection-end-line="322" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.85470086">
+          <caret line="754" column="10" selection-start-line="754" selection-start-column="1" selection-end-line="754" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tpl/header_tab.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1824687">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view_customers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/estyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7094017">
+          <caret line="119" column="3" selection-start-line="119" selection-start-column="3" selection-end-line="119" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/master_head.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllStockId4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4265233">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllStockId5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45698926">
+          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllStockId2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45698926">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllStockId.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39605734">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="46" />
+          <caret line="13" column="73" selection-start-line="13" selection-start-column="73" selection-end-line="13" selection-end-column="73" />
           <folding>
             <marker date="1485425071987" expanded="true" signature="130:186" placeholder="SELECT * FRO..stock_details..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails5.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4265233">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4265233">
+          <caret line="14" column="76" selection-start-line="14" selection-start-column="76" selection-end-line="14" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+          <folding>
+            <marker date="1485760288498" expanded="true" signature="135:192" placeholder="SELECT * FRO..stock_details..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getAllStockId3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45698926">
+          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax_request_files/getStockDetails3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="100" selection-start-line="14" selection-start-column="100" selection-end-line="14" selection-end-column="100" />
+          <folding>
+            <marker date="1485760217349" expanded="true" signature="135:192" placeholder="SELECT * FRO..stock_details..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/add_sales.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2450805">
-          <caret line="238" column="12" selection-start-line="238" selection-start-column="12" selection-end-line="238" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.5788531">
+          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#tr#2;n#table#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1485430613967" expanded="true" signature="54:123" placeholder="SELECT suppl..supplier_details..." />
-            <marker date="1485430613967" expanded="true" signature="169:238" placeholder="SELECT categ..category_details..." />
-            <marker date="1485430613967" expanded="true" signature="663:948" placeholder="INSERT into ..." />
-            <marker date="1485430613967" expanded="true" signature="4134:4189" placeholder="..." />
-            <marker date="1485430613967" expanded="true" signature="5553:5610" placeholder="..." />
-            <marker date="1485430613967" expanded="true" signature="17102:17121" placeholder="..." />
+            <element signature="n#script#0;n#!!top" expanded="false" />
+            <element signature="n#script#1;n#!!top" expanded="false" />
+            <element signature="n#script#2;n#!!top" expanded="false" />
+            <element signature="n#script#3;n#!!top" expanded="false" />
+            <element signature="n#script#4;n#!!top" expanded="false" />
+            <element signature="n#script#5;n#!!top" expanded="false" />
+            <element signature="n#script#6;n#!!top" expanded="false" />
+            <element signature="n#script#7;n#!!top" expanded="false" />
+            <element signature="n#script#8;n#!!top" expanded="false" />
+            <element signature="n#script#9;n#!!top" expanded="false" />
+            <element signature="n#script#10;n#!!top" expanded="false" />
+            <element signature="n#script#11;n#!!top" expanded="false" />
+            <element signature="n#script#12;n#!!top" expanded="false" />
+            <element signature="n#script#13;n#!!top" expanded="false" />
+            <element signature="n#script#14;n#!!top" expanded="false" />
+            <element signature="n#script#15;n#!!top" expanded="false" />
+            <element signature="n#script#16;n#!!top" expanded="false" />
+            <element signature="n#script#17;n#!!top" expanded="false" />
+            <marker date="1485768129463" expanded="true" signature="54:123" placeholder="SELECT suppl..supplier_details..." />
+            <marker date="1485768129463" expanded="true" signature="169:238" placeholder="SELECT categ..category_details..." />
+            <marker date="1485768129463" expanded="true" signature="2212:2495" placeholder="INSERT into ..." />
+            <marker date="1485768129463" expanded="true" signature="5697:5752" placeholder="..." />
+            <marker date="1485768129463" expanded="true" signature="7116:7173" placeholder="..." />
           </folding>
         </state>
       </provider>

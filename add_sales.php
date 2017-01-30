@@ -9,19 +9,65 @@ $categories = $db->query($query);
 
 
 if(isset($_POST['submit'])){
-    $stock_id = 'SD'.$_POST['stock_id'];
-    $stock_name = $_POST['stock_name'];
-    $stock_quantity = $_POST['stock_quantity'];
-    $supplier_id= $_POST['supplier_id'];
-    $company_price = $_POST['company_price'];
-    $selling_price = $_POST['selling_price'];
-    $category = $_POST['category'];
-    $expire_date = $_POST['expire_date'];
+    $transaction_no = $_POST['transaction_no'];
+    $sales_date = $_POST['sales_date'];
+    $bill_no = $_POST['bill_no'];
+    $customer = $_POST['customer'];
+    $address = $_POST['address'];
+    $contact = $_POST['contact'];
+    $products = '';
+    $quantity = '';
+    $price = '';
+    $available_stock = '';
+    $total = '';
 
-    $query  = "INSERT into stock_details (stock_id, stock_name, stock_quantity,supplier_id,company_price, selling_price,category, date, expire_date)
+    if($_POST['Products']!= ''){
+        $products .= $_POST['Products'].',';
+        $quantity .= $_POST['quantity'];
+        $price .= $_POST['$price'];
+        $available_stock .= $_POST['$available_stock'];
+        $total .= $_POST['$total'];
+    }
+    if($_POST['Products2']!= ''){
+        $products .= $_POST['Products2'].',';
+        $quantity .= $_POST['quantity2'];
+        $price .= $_POST['$price2'];
+        $available_stock .= $_POST['$available_stock2'];
+        $total .= $_POST['$total2'];
+    }
+    if($_POST['Products3']!= ''){
+        $products .= $_POST['Products3'].',';
+        $quantity .= $_POST['quantity3'];
+        $price .= $_POST['$price3'];
+        $available_stock .= $_POST['$available_stock3'];
+        $total .= $_POST['$total3'];
+    }
+    if($_POST['Products4']!= ''){
+        $products .= $_POST['Products4'].',';
+        $quantity .= $_POST['quantity4'];
+        $price .= $_POST['$price4'];
+        $available_stock .= $_POST['$available_stock4'];
+        $total .= $_POST['$total4'];
+    }
+    if($_POST['Products5']!= ''){
+        $products .= $_POST['Products5'];
+        $quantity .= $_POST['quantity5'];
+        $price .= $_POST['$price5'];
+        $available_stock .= $_POST['$available_stock5'];
+        $total .= $_POST['$total5'];
+    }
+    $discount_amount = $_POST['discount_amount'];
+    $grand_total = $_POST['grand_total'];
+    $payment = $_POST['payment'];
+    $due = $_POST['due'];
+    $payment_method = $_POST['payment_method'];
+    $due_date= $_POST['due_date'];
+    $description= $_POST['description'];
+
+    $query  = "INSERT into stock_sales (stock_id, stock_name, stock_quantity,supplier_id,company_price, selling_price,category, date, expire_date)
               VALUES ('$stock_id','$stock_name', '$stock_quantity','$supplier_id','$company_price', '$selling_price','$category',NOW(), '$expire_date')";
     $db->execute($query);
-    header('Location: view_product.php');
+    header('Location: view_sales.php');
 }
 
 ?>
@@ -71,7 +117,7 @@ if(isset($_POST['submit'])){
                                                 Date:
                                             </td>
                                             <td class="col-md-2">
-                                                <input data-provide="datepicker" class="form-control datepicker" data-date-format="mm/dd/yyyy">
+                                                <input data-provide="datepicker" class="form-control datepicker" name="sales_date" data-date-format="mm/dd/yyyy">
                                             </td>
                                             <td class="col-md-1">
                                                 Bill No:
@@ -123,7 +169,51 @@ if(isset($_POST['submit'])){
                                                     <td><input type="text" name="stock_price" id="stock_price" class="form-control"></td>
                                                     <td><input type="text" name="available_stock" id="available_stock" class="form-control"></td>
                                                     <td><input type="text" name="total" id="total" class="form-control"></td>
-                                                    <td><a class="btn btn-info" id="add_row">Add Another</a></td>
+                                                    <td><a class="btn btn-info" id="add_row_2">+</a></td>
+                                                </tr>
+                                                <tr id="product_row_2" >
+                                                    <td>
+                                                        <input type="text" name="Products2"  id="Products2" class="Products2 form-control">
+                                                        <div id="productList2" class="productList2" style="position: absolute;"></div>
+                                                    </td>
+                                                    <td><input type="number" name="quantity2" id="quantity2"  class="form-control"></td>
+                                                    <td><input type="text" name="stock_price2" id="stock_price2" class="form-control"></td>
+                                                    <td><input type="text" name="available_stock2" id="available_stock2" class="form-control"></td>
+                                                    <td><input type="text" name="total2" id="total2" class="form-control"></td>
+                                                    <td><a class="btn btn-info" id="remove_row_2">-</a><a class="btn btn-info" id="add_row_3">+</a></td>
+                                                </tr>
+                                                <tr id="product_row_3">
+                                                    <td>
+                                                        <input type="text" name="Products3"  id="Products3" class="Products3 form-control">
+                                                        <div id="productList3" class="productList3" style="position: absolute;"></div>
+                                                    </td>
+                                                    <td><input type="number" name="quantity3" id="quantity3"  class="form-control"></td>
+                                                    <td><input type="text" name="stock_price3" id="stock_price3" class="form-control"></td>
+                                                    <td><input type="text" name="available_stock3" id="available_stock3" class="form-control"></td>
+                                                    <td><input type="text" name="total3" id="total3" class="form-control"></td>
+                                                    <td><a class="btn btn-info" id="remove_row_3">-</a><a class="btn btn-info" id="add_row_4">+</a></td>
+                                                </tr>
+                                                <tr id="product_row_4">
+                                                    <td>
+                                                        <input type="text" name="Products4"  id="Products4" class="Products4 form-control">
+                                                        <div id="productList4" class="productList4" style="position: absolute;"></div>
+                                                    </td>
+                                                    <td><input type="number" name="quantity4" id="quantity4"  class="form-control"></td>
+                                                    <td><input type="text" name="stock_price4" id="stock_price4" class="form-control"></td>
+                                                    <td><input type="text" name="available_stock4" id="available_stock4" class="form-control"></td>
+                                                    <td><input type="text" name="total4" id="total4" class="form-control"></td>
+                                                    <td><a class="btn btn-info" id="remove_row_4">-</a><a class="btn btn-info" id="add_row_5">+</a></td>
+                                                </tr>
+                                                <tr id="product_row_5">
+                                                    <td>
+                                                        <input type="text" name="Products5"  id="Products5" class="Products5 form-control">
+                                                        <div id="productList5" class="productList5" style="position: absolute;"></div>
+                                                    </td>
+                                                    <td><input type="number" name="quantity5" id="quantity5"  class="form-control"></td>
+                                                    <td><input type="text" name="stock_price5" id="stock_price5" class="form-control"></td>
+                                                    <td><input type="text" name="available_stock5" id="available_stock5" class="form-control"></td>
+                                                    <td><input type="text" name="total5" id="total5" class="form-control"></td>
+                                                    <td><a class="btn btn-info" id="remove_row_5">-</a></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -152,16 +242,10 @@ if(isset($_POST['submit'])){
                                                 <input type="text"  class="form-control" name="payment" id="payment">
                                             </td>
                                             <td class="col-md-1">
-                                                Balance:
+                                                Due:
                                             </td>
                                             <td class="col-md-1">
-                                                <input type="text" class="form-control" name="balance" id="balance">
-                                            </td>
-                                            <td class="col-md-1">
-                                                Payable Amount:
-                                            </td>
-                                            <td class="col-md-1">
-                                                <input type="text" class="form-control" name="payable_amount" id="payable_amount">
+                                                <input type="text" class="form-control" name="due" id="due">
                                             </td>
                                         </tr>
                                         <tr>
@@ -206,8 +290,24 @@ if(isset($_POST['submit'])){
         </div>
     </div>
 </div>
-<div id="hidden_fields"></div> <!-- for hidden inputs store which data came from ajax requested file-->
-<div id="hidden_fields_stocks"></div> <!-- for hidden inputs store which data came from ajax requested file-->
+
+
+<!-- for hidden inputs store which data came from ajax requested file-->
+<!-- for hidden inputs store which data came from ajax requested file-->
+<div id="hidden_fields"></div>
+<div id="hidden_fields_stocks"></div>
+
+<div id="hidden_fields2"></div>
+<div id="hidden_fields_stocks2"></div>
+
+<div id="hidden_fields3"></div>
+<div id="hidden_fields_stocks3"></div>
+
+<div id="hidden_fields4"></div>
+<div id="hidden_fields_stocks4"></div>
+
+<div id="hidden_fields5"></div>
+<div id="hidden_fields_stocks5"></div>
 
 <?php include("assets/js.php"); ?>
 
@@ -284,8 +384,219 @@ if(isset($_POST['submit'])){
     });
 
 </script>
+<script>
+    $(document).ready(function(){
+        $(".Products2").keyup(function(){
+            var stock_id_string2 = $(this).val();
+            if(stock_id_string2 == ''){
+                $('.productList2').fadeOut();
+            }
+            if (stock_id_string2 != '') {
+                $.ajax({
+                    url: "ajax_request_files/getAllStockId2.php",
+                    method: "POST",
+                    data: {stock_id_string2:stock_id_string2},
+                    success: function(data)
+                    {
+                        $('.productList2').fadeIn();
+                        $('.productList2').html(data);
+                    }
+                });
+            }
+        });
+
+        $('.productList2').on('click', 'li', function(){
+            var stock_id2 = $(this).text();
+            $.ajax({
+                url: "ajax_request_files/getStockDetails2.php",
+                method: "POST",
+                data: {stock_id2:stock_id2},
+                success: function(data)
+                {
+                    $('#hidden_fields_stocks2').html(data);
+                    var hidden_selling_price2 = $('#hidden_selling_price2').val();
+                    var hidden_stock_quantity2 = $('#hidden_stock_quantity2').val();
+                    $('#stock_price2').val(hidden_selling_price2);
+                    $('#available_stock2').val(hidden_stock_quantity2);
+                    $("#quantity2").attr({
+                        "max": hidden_stock_quantity2,        // substitute your own
+                        "min": 1                       // values (or variables) here
+                    });
+
+                }
+            });
 
 
+
+            $('.Products2').val($(this).text());
+            $('.productList2').fadeOut();
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        $(".Products3").keyup(function(){
+            var stock_id_string3 = $(this).val();
+            if(stock_id_string3 == ''){
+                $('.productList3').fadeOut();
+            }
+            if (stock_id_string3 != '') {
+                $.ajax({
+                    url: "ajax_request_files/getAllStockId3.php",
+                    method: "POST",
+                    data: {stock_id_string3:stock_id_string3},
+                    success: function(data)
+                    {
+                        $('.productList3').fadeIn();
+                        $('.productList3').html(data);
+                    }
+                });
+            }
+        });
+
+        $('.productList3').on('click', 'li', function(){
+            var stock_id3 = $(this).text();
+            $.ajax({
+                url: "ajax_request_files/getStockDetails3.php",
+                method: "POST",
+                data: {stock_id3:stock_id3},
+                success: function(data)
+                {
+                    $('#hidden_fields_stocks3').html(data);
+                    var hidden_selling_price3 = $('#hidden_selling_price3').val();
+                    var hidden_stock_quantity3 = $('#hidden_stock_quantity3').val();
+                    $('#stock_price3').val(hidden_selling_price3);
+                    $('#available_stock3').val(hidden_stock_quantity3);
+                    $("#quantity3").attr({
+                        "max": hidden_stock_quantity3,        // substitute your own
+                        "min": 1                       // values (or variables) here
+                    });
+
+                }
+            });
+
+
+
+            $('.Products3').val($(this).text());
+            $('.productList3').fadeOut();
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        $(".Products4").keyup(function(){
+            var stock_id_string4 = $(this).val();
+            if(stock_id_string4 == ''){
+                $('.productList4').fadeOut();
+            }
+            if (stock_id_string4 != '') {
+                $.ajax({
+                    url: "ajax_request_files/getAllStockId4.php",
+                    method: "POST",
+                    data: {stock_id_string4:stock_id_string4},
+                    success: function(data)
+                    {
+                        $('.productList4').fadeIn();
+                        $('.productList4').html(data);
+                    }
+                });
+            }
+        });
+
+        $('.productList4').on('click', 'li', function(){
+            var stock_id4 = $(this).text();
+            $.ajax({
+                url: "ajax_request_files/getStockDetails4.php",
+                method: "POST",
+                data: {stock_id4:stock_id4},
+                success: function(data)
+                {
+                    $('#hidden_fields_stocks4').html(data);
+                    var hidden_selling_price4 = $('#hidden_selling_price4').val();
+                    var hidden_stock_quantity4 = $('#hidden_stock_quantity4').val();
+                    $('#stock_price4').val(hidden_selling_price4);
+                    $('#available_stock4').val(hidden_stock_quantity4);
+                    $("#quantity4").attr({
+                        "max": hidden_stock_quantity4,        // substitute your own
+                        "min": 1                       // values (or variables) here
+                    });
+
+                }
+            });
+
+
+
+            $('.Products4').val($(this).text());
+            $('.productList4').fadeOut();
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        $(".Products5").keyup(function(){
+            var stock_id_string5 = $(this).val();
+            if(stock_id_string5 == ''){
+                $('.productList5').fadeOut();
+            }
+            if (stock_id_string5 != '') {
+                $.ajax({
+                    url: "ajax_request_files/getAllStockId5.php",
+                    method: "POST",
+                    data: {stock_id_string5:stock_id_string5},
+                    success: function(data)
+                    {
+                        $('.productList5').fadeIn();
+                        $('.productList5').html(data);
+                    }
+                });
+            }
+        });
+
+        $('.productList5').on('click', 'li', function(){
+            var stock_id5 = $(this).text();
+            $.ajax({
+                url: "ajax_request_files/getStockDetails5.php",
+                method: "POST",
+                data: {stock_id5:stock_id5},
+                success: function(data)
+                {
+                    $('#hidden_fields_stocks5').html(data);
+                    var hidden_selling_price5 = $('#hidden_selling_price5').val();
+                    var hidden_stock_quantity5 = $('#hidden_stock_quantity5').val();
+                    $('#stock_price5').val(hidden_selling_price5);
+                    $('#available_stock5').val(hidden_stock_quantity5);
+                    $("#quantity5").attr({
+                        "max": hidden_stock_quantity5,        // substitute your own
+                        "min": 1                       // values (or variables) here
+                    });
+
+                }
+            });
+
+
+
+            $('.Products5').val($(this).text());
+            $('.productList5').fadeOut();
+        });
+    });
+
+</script>
+<!--assign grand total cost-->
+<script>
+    $("#grand_total").click(function(){
+        var discount_amount =  $('#discount_amount').val();
+        var total = $("#total").val();
+        var total2 = $("#total2").val();
+        var total3 = $("#total3").val();
+        var total4 =  $("#total4").val();
+        var total5 = $("#total5").val();
+        var grand_total =  (parseInt(total) + parseInt(total2) +  parseInt(total3) +  parseInt(total4) +  parseInt(total5)) - parseInt(discount_amount);
+        $('#grand_total').val(grand_total);
+    });
+</script>
 <!--selecting customer-->
 <script>
         $("#customer").keyup(function(){
@@ -338,6 +649,15 @@ if(isset($_POST['submit'])){
 
 <!--script for calculate total cost for an product select-->
 <script>
+    var zero = 0;
+    $('#total').val(zero);
+    $('#total2').val(zero);
+    $('#total3').val(zero);
+    $('#total4').val(zero);
+    $('#total5').val(zero);
+    $('#discount_amount').val(zero);
+</script>
+<script>
     $("#quantity").change(function() {
         var available_stock = $('#quantity').val();
         var stock_price = $('#stock_price').val();
@@ -345,25 +665,87 @@ if(isset($_POST['submit'])){
         $('#total').val(total);
     });
 </script>
+<script>
+    $("#quantity2").change(function() {
+        var available_stock2 = $('#quantity2').val();
+        var stock_price2 = $('#stock_price2').val();
+        var total2 = available_stock2 * stock_price2;
+        $('#total2').val(total2);
+    });
+</script>
+<script>
+    $("#quantity3").change(function() {
+        var available_stock3 = $('#quantity3').val();
+        var stock_price3 = $('#stock_price3').val();
+        var total3 = available_stock3 * stock_price3;
+        $('#total3').val(total3);
+    });
+</script>
+<script>
+    $("#quantity4").change(function() {
+        var available_stock4 = $('#quantity4').val();
+        var stock_price4 = $('#stock_price4').val();
+        var total4 = available_stock4 * stock_price4;
+        $('#total4').val(total4);
+    });
+</script>
+<script>
+    $("#quantity5").change(function() {
+        var available_stock5 = $('#quantity5').val();
+        var stock_price5 = $('#stock_price5').val();
+        var total5 = available_stock5 * stock_price5;
+        $('#total5').val(total5);
+    });
+</script>
 
+<!--payment due -->
+<script>
+    $("#payment").val('0');
+    $("#payment").keyup(function(){
+        var payment_amount =  $("#payment").val();
+        var grand_total_all  = $('#grand_total').val();
+        var due = parseInt(grand_total_all) - parseInt(payment_amount);
+        if(due<=0){
+            $("#due").val('0');
+        }
+        else
+            $("#due").val(due);
 
-<!--add new row for new stock -->
+    });
+
+</script>
+<!--add or remove new row for new stock -->
 <script>
     $(function () {
-        var x = 0;
-        $("#add_row").click(function () {
-            x++;
-            if(x<=4) {
-                $("#stock_select_form_body").append("" +
-                    '<tr><td><input type="text" name="Products" id="Products" class="Products form-control">' +
-                    '<div id="productList" class="productList" style="position: absolute;"></div></td><td>' +
-                    '<input type="number" name="quantity" id="quantity"  class="form-control"></td>' +
-                    '<td><input type="text" name="stock_price" id="stock_price" class="form-control"></td>' +
-                    '<td><input type="text" name="available_stock" id="available_stock" class="form-control"></td>' +
-                    '<td><input type="text" name="total" id="total" class="form-control"></td>' +
-                    '</tr>');
+        $('#product_row_2').addClass('hide_div');
+        $('#product_row_3').addClass('hide_div');
+        $('#product_row_4').addClass('hide_div');
+        $('#product_row_5').addClass('hide_div');
 
-            }
+        $("#add_row_2").click(function () {
+            $('#product_row_2').removeClass('hide_div');
+        });
+        $("#add_row_3").click(function () {
+            $('#product_row_3').removeClass('hide_div');
+        });
+        $("#add_row_4").click(function () {
+            $('#product_row_4').removeClass('hide_div');
+        });
+        $("#add_row_5").click(function () {
+            $('#product_row_5').removeClass('hide_div');
+        });
+
+        $("#remove_row_2").click(function () {
+            $('#product_row_2').addClass('hide_div');
+        });
+        $("#remove_row_3").click(function () {
+            $('#product_row_3').addClass('hide_div');
+        });
+        $("#remove_row_4").click(function () {
+            $('#product_row_4').addClass('hide_div');
+        });
+        $("#remove_row_5").click(function () {
+            $('#product_row_5').addClass('hide_div');
         });
     })
 </script>
