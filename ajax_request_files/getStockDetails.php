@@ -11,5 +11,6 @@ if(isset($_POST["stock_id"])) {
         }
 }
 ?>
+<input type="hidden" id="hidden_company_price" name="hidden_company_price" value="<?php echo $a[0]['company_price']; ?>">
 <input type="hidden" id="hidden_selling_price" name="hidden_selling_price" value="<?php echo $a[0]['selling_price']; ?>">
 <input type="hidden" id="hidden_stock_quantity" name="hidden_stock_quantity" value="<?php echo $a[0]['stock_quantity']; ?>">

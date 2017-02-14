@@ -1,4 +1,5 @@
-<?php include("master_head.php"); ?>
+<?php include("master_head.php");
+?>
 
 <?php
 $query = "SELECT supplier_name FROM supplier_details ORDER by supplier_name ASC";
@@ -9,53 +10,74 @@ $categories = $db->query($query);
 
 
 if(isset($_POST['submit'])){
-    $transaction_no = $_POST['transaction_no'];
-    $sales_date = $_POST['sales_date'];
-    $bill_no = $_POST['bill_no'];
     $customer = $_POST['customer'];
     $address = $_POST['address'];
     $contact = $_POST['contact'];
+    $query_for_customer = "SELECT customer_name FROM customer_details WHERE customer_name = '$customer'";
+    $exist_customer = $db->query($query_for_customer);
+    foreach($exist_customer as $ec){$data = $ec;}
+    if($data == null){
+        $query  = "INSERT into customer_details (customer_name, customer_address, customer_contact1)
+              VALUES ('$customer','$address', '$contact')";
+        $db->execute($query);
+    }
+
+
+    $transaction_no = $_POST['transaction_no'];
+    $sales_date = $_POST['sales_date'];
+    $bill_no = $_POST['bill_no'];
     $products = '';
     $quantity = '';
     $price = '';
     $available_stock = '';
     $total = '';
 
-    if($_POST['Products']!= ''){
-        $products .= $_POST['Products'].',';
-        $quantity .= $_POST['quantity'];
-        $price .= $_POST['$price'];
-        $available_stock .= $_POST['$available_stock'];
-        $total .= $_POST['$total'];
+    if($_POST['Products']!=''){
+        $products = $_POST['Products'];
+        $quantity = $_POST['quantity'];
+        $price = $_POST['stock_price'];
+        $available_stock = $_POST['available_stock'];
+        $total = $_POST['total'];
+        $db->update_prd_quantity($_POST['Products'] , $_POST['quantity']);
+
+        if($_POST['Products2']!=''){
+            $products .= ','.$_POST['Products2'];
+            $quantity .= ','.$_POST['quantity2'];
+            $price .= ','.$_POST['stock_price2'];
+            $available_stock .= ','.$_POST['total2'];
+            $total .= ','.$_POST['available_stock2'];
+            $db->update_prd_quantity($_POST['Products2'] , $_POST['quantity2']);
+
+            if($_POST['Products3']!=''){
+                $products .= ','.$_POST['Products3'];
+                $quantity .= ','.$_POST['quantity3'];
+                $price .= ','.$_POST['stock_price3'];
+                $available_stock .= ','.$_POST['available_stock3'];
+                $available_stock .= ','.$_POST['total3'];
+                $db->update_prd_quantity($_POST['Products3'] , $_POST['quantity3']);
+
+                if($_POST['Products4']!=''){
+                    $products .= ','.$_POST['Products4'];
+                    $quantity .= ','.$_POST['quantity4'];
+                    $price .= ','.$_POST['stock_price4'];
+                    $available_stock .= ','.$_POST['available_stock4'];
+                    $available_stock .= ','.$_POST['total4'];
+                    $db->update_prd_quantity($_POST['Products4'] , $_POST['quantity4']);
+
+                    if($_POST['Products5']!=''){
+                        $products .= ','.$_POST['Products5'];
+                        $quantity .= ','.$_POST['quantity5'];
+                        $price .= ','.$_POST['stock_price5'];
+                        $available_stock .= ','.$_POST['available_stock5'];
+                        $available_stock .= ','.$_POST['total5'];
+                        $db->update_prd_quantity($_POST['Products5'] , $_POST['quantity5']);
+                    }
+                }
+            }
+        }
+
     }
-    if($_POST['Products2']!= ''){
-        $products .= $_POST['Products2'].',';
-        $quantity .= $_POST['quantity2'];
-        $price .= $_POST['$price2'];
-        $available_stock .= $_POST['$available_stock2'];
-        $total .= $_POST['$total2'];
-    }
-    if($_POST['Products3']!= ''){
-        $products .= $_POST['Products3'].',';
-        $quantity .= $_POST['quantity3'];
-        $price .= $_POST['$price3'];
-        $available_stock .= $_POST['$available_stock3'];
-        $total .= $_POST['$total3'];
-    }
-    if($_POST['Products4']!= ''){
-        $products .= $_POST['Products4'].',';
-        $quantity .= $_POST['quantity4'];
-        $price .= $_POST['$price4'];
-        $available_stock .= $_POST['$available_stock4'];
-        $total .= $_POST['$total4'];
-    }
-    if($_POST['Products5']!= ''){
-        $products .= $_POST['Products5'];
-        $quantity .= $_POST['quantity5'];
-        $price .= $_POST['$price5'];
-        $available_stock .= $_POST['$available_stock5'];
-        $total .= $_POST['$total5'];
-    }
+
     $discount_amount = $_POST['discount_amount'];
     $grand_total = $_POST['grand_total'];
     $payment = $_POST['payment'];
@@ -63,11 +85,20 @@ if(isset($_POST['submit'])){
     $payment_method = $_POST['payment_method'];
     $due_date= $_POST['due_date'];
     $description= $_POST['description'];
+    $loss_or_profit = $_POST['loss_or_profit'];
 
-    $query  = "INSERT into stock_sales (stock_id, stock_name, stock_quantity,supplier_id,company_price, selling_price,category, date, expire_date)
-              VALUES ('$stock_id','$stock_name', '$stock_quantity','$supplier_id','$company_price', '$selling_price','$category',NOW(), '$expire_date')";
+
+    $query  = "INSERT into stock_sales (
+transactionid,sales_date,billnumber,customer,address,contact,product,quantity,selling_price,dis_amount,grand_total,payment,
+due_amount,due,payment_method,description,amount,l_p
+)
+VALUES (
+'$transaction_no','$sales_date','$bill_no','$customer','$address','$contact','$products','$quantity','$price','$discount_amount','$grand_total',
+'$payment','$due','$due_date','$payment_method','$description','$total','$loss_or_profit'
+)";
     $db->execute($query);
-    header('Location: view_sales.php');
+
+//    header('Location: view_sales.php');
 }
 
 ?>
@@ -166,9 +197,15 @@ if(isset($_POST['submit'])){
                                                         <div id="productList" class="productList" style="position: absolute;"></div>
                                                     </td>
                                                     <td><input type="number" name="quantity" id="quantity"  class="form-control"></td>
-                                                    <td><input type="text" name="stock_price" id="stock_price" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="stock_price" id="stock_price" class="form-control">
+                                                        <input type="hidden" name="company_price" id="company_price" class="form-control">
+                                                    </td>
                                                     <td><input type="text" name="available_stock" id="available_stock" class="form-control"></td>
-                                                    <td><input type="text" name="total" id="total" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="total" id="total" class="form-control">
+                                                        <input type="hidden" name="company_cost_total" id="company_cost_total">
+                                                    </td>
                                                     <td><a class="btn btn-info" id="add_row_2">+</a></td>
                                                 </tr>
                                                 <tr id="product_row_2" >
@@ -177,9 +214,15 @@ if(isset($_POST['submit'])){
                                                         <div id="productList2" class="productList2" style="position: absolute;"></div>
                                                     </td>
                                                     <td><input type="number" name="quantity2" id="quantity2"  class="form-control"></td>
-                                                    <td><input type="text" name="stock_price2" id="stock_price2" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="stock_price2" id="stock_price2" class="form-control">
+                                                        <input type="hidden" name="company_price2" id="company_price2" class="form-control">
+                                                    </td>
                                                     <td><input type="text" name="available_stock2" id="available_stock2" class="form-control"></td>
-                                                    <td><input type="text" name="total2" id="total2" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="total2" id="total2" class="form-control">
+                                                        <input type="hidden" name="company_cost_total2" id="company_cost_total2">
+                                                    </td>
                                                     <td><a class="btn btn-info" id="remove_row_2">-</a><a class="btn btn-info" id="add_row_3">+</a></td>
                                                 </tr>
                                                 <tr id="product_row_3">
@@ -188,9 +231,15 @@ if(isset($_POST['submit'])){
                                                         <div id="productList3" class="productList3" style="position: absolute;"></div>
                                                     </td>
                                                     <td><input type="number" name="quantity3" id="quantity3"  class="form-control"></td>
-                                                    <td><input type="text" name="stock_price3" id="stock_price3" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="stock_price3" id="stock_price3" class="form-control">
+                                                        <input type="hidden" name="company_price3" id="company_price3" class="form-control">
+                                                    </td>
                                                     <td><input type="text" name="available_stock3" id="available_stock3" class="form-control"></td>
-                                                    <td><input type="text" name="total3" id="total3" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="total3" id="total3" class="form-control">
+                                                        <input type="hidden" name="company_cost_total3" id="company_cost_total3">
+                                                    </td>
                                                     <td><a class="btn btn-info" id="remove_row_3">-</a><a class="btn btn-info" id="add_row_4">+</a></td>
                                                 </tr>
                                                 <tr id="product_row_4">
@@ -199,9 +248,15 @@ if(isset($_POST['submit'])){
                                                         <div id="productList4" class="productList4" style="position: absolute;"></div>
                                                     </td>
                                                     <td><input type="number" name="quantity4" id="quantity4"  class="form-control"></td>
-                                                    <td><input type="text" name="stock_price4" id="stock_price4" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="stock_price4" id="stock_price4" class="form-control">
+                                                        <input type="hidden" name="company_price4" id="company_price4" class="form-control">
+                                                    </td>
                                                     <td><input type="text" name="available_stock4" id="available_stock4" class="form-control"></td>
-                                                    <td><input type="text" name="total4" id="total4" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="total4" id="total4" class="form-control">
+                                                        <input type="hidden" name="company_cost_total4" id="company_cost_total4">
+                                                    </td>
                                                     <td><a class="btn btn-info" id="remove_row_4">-</a><a class="btn btn-info" id="add_row_5">+</a></td>
                                                 </tr>
                                                 <tr id="product_row_5">
@@ -210,9 +265,15 @@ if(isset($_POST['submit'])){
                                                         <div id="productList5" class="productList5" style="position: absolute;"></div>
                                                     </td>
                                                     <td><input type="number" name="quantity5" id="quantity5"  class="form-control"></td>
-                                                    <td><input type="text" name="stock_price5" id="stock_price5" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="stock_price5" id="stock_price5" class="form-control">
+                                                        <input type="hidden" name="company_price5" id="company_price5" class="form-control">
+                                                    </td>
                                                     <td><input type="text" name="available_stock5" id="available_stock5" class="form-control"></td>
-                                                    <td><input type="text" name="total5" id="total5" class="form-control"></td>
+                                                    <td>
+                                                        <input type="text" name="total5" id="total5" class="form-control">
+                                                        <input type="hidden" name="company_cost_total5" id="company_cost_total5">
+                                                    </td>
                                                     <td><a class="btn btn-info" id="remove_row_5">-</a></td>
                                                 </tr>
                                                 </tbody>
@@ -231,6 +292,9 @@ if(isset($_POST['submit'])){
                                             </td>
                                             <td class="col-md-1">
                                                 <input type="text" class="form-control" name="grand_total" id="grand_total">
+                                                <input type="hidden" name="company_total_product_cost" id="company_total_product_cost"> <!--hidden filed to carry the loss or profit value-->
+                                                <input type="hidden" name="loss_or_profit" id="loss_or_profit"> <!--hidden filed to carry the loss or profit value-->
+
                                             </td>
 
                                         </tr>
@@ -262,7 +326,7 @@ if(isset($_POST['submit'])){
                                                 Due Date:
                                             </td>
                                             <td class="col-md-1">
-                                                <input type="text" class="form-control" name="due_date" id="due_date">
+                                                <input data-provide="datepicker" class="form-control datepicker" name="due_date" id="due_date" data-date-format="mm/dd/yyyy">
                                             </td>
                                             <td class="col-md-1">
                                                 Description:
@@ -308,6 +372,8 @@ if(isset($_POST['submit'])){
 
 <div id="hidden_fields5"></div>
 <div id="hidden_fields_stocks5"></div>
+
+
 
 <?php include("assets/js.php"); ?>
 
@@ -364,8 +430,10 @@ if(isset($_POST['submit'])){
                 success: function(data)
                 {
                     $('#hidden_fields_stocks').html(data);
+                    var hidden_company_price = $('#hidden_company_price').val();
                     var hidden_selling_price = $('#hidden_selling_price').val();
                     var hidden_stock_quantity = $('#hidden_stock_quantity').val();
+                    $('#company_price').val(hidden_company_price);
                     $('#stock_price').val(hidden_selling_price);
                     $('#available_stock').val(hidden_stock_quantity);
                     $("#quantity").attr({
@@ -414,8 +482,10 @@ if(isset($_POST['submit'])){
                 success: function(data)
                 {
                     $('#hidden_fields_stocks2').html(data);
+                    var hidden_company_price2 = $('#hidden_company_price2').val();
                     var hidden_selling_price2 = $('#hidden_selling_price2').val();
                     var hidden_stock_quantity2 = $('#hidden_stock_quantity2').val();
+                    $('#company_price2').val(hidden_company_price2);
                     $('#stock_price2').val(hidden_selling_price2);
                     $('#available_stock2').val(hidden_stock_quantity2);
                     $("#quantity2").attr({
@@ -464,8 +534,10 @@ if(isset($_POST['submit'])){
                 success: function(data)
                 {
                     $('#hidden_fields_stocks3').html(data);
+                    var hidden_company_price3 = $('#hidden_company_price3').val();
                     var hidden_selling_price3 = $('#hidden_selling_price3').val();
                     var hidden_stock_quantity3 = $('#hidden_stock_quantity3').val();
+                    $('#company_price3').val(hidden_company_price3);
                     $('#stock_price3').val(hidden_selling_price3);
                     $('#available_stock3').val(hidden_stock_quantity3);
                     $("#quantity3").attr({
@@ -514,8 +586,10 @@ if(isset($_POST['submit'])){
                 success: function(data)
                 {
                     $('#hidden_fields_stocks4').html(data);
+                    var hidden_company_price4 = $('#hidden_company_price4').val();
                     var hidden_selling_price4 = $('#hidden_selling_price4').val();
                     var hidden_stock_quantity4 = $('#hidden_stock_quantity4').val();
+                    $('#company_price4').val(hidden_company_price4);
                     $('#stock_price4').val(hidden_selling_price4);
                     $('#available_stock4').val(hidden_stock_quantity4);
                     $("#quantity4").attr({
@@ -564,8 +638,10 @@ if(isset($_POST['submit'])){
                 success: function(data)
                 {
                     $('#hidden_fields_stocks5').html(data);
+                    var hidden_company_price5 = $('#hidden_company_price5').val();
                     var hidden_selling_price5 = $('#hidden_selling_price5').val();
                     var hidden_stock_quantity5 = $('#hidden_stock_quantity5').val();
+                    $('#company_price5').val(hidden_company_price5);
                     $('#stock_price5').val(hidden_selling_price5);
                     $('#available_stock5').val(hidden_stock_quantity5);
                     $("#quantity5").attr({
@@ -584,10 +660,23 @@ if(isset($_POST['submit'])){
     });
 
 </script>
-<!--assign grand total cost-->
+<!--assign grand total cost and loss or profit-->
 <script>
     $("#grand_total").click(function(){
         var discount_amount =  $('#discount_amount').val();
+
+        var company_cost_total = $("#company_cost_total").val();
+        var company_cost_total2 = $("#company_cost_total2").val();
+        var company_cost_total3 = $("#company_cost_total3").val();
+        var company_cost_total4 = $("#company_cost_total4").val();
+        var company_cost_total5 = $("#company_cost_total5").val();
+
+        var company_total_product_cost = (parseInt(company_cost_total) + parseInt(company_cost_total2)+ parseInt(company_cost_total3));
+        $('#company_total_product_cost').val(company_total_product_cost);
+
+
+
+
         var total = $("#total").val();
         var total2 = $("#total2").val();
         var total3 = $("#total3").val();
@@ -595,6 +684,8 @@ if(isset($_POST['submit'])){
         var total5 = $("#total5").val();
         var grand_total =  (parseInt(total) + parseInt(total2) +  parseInt(total3) +  parseInt(total4) +  parseInt(total5)) - parseInt(discount_amount);
         $('#grand_total').val(grand_total);
+
+        $('#loss_or_profit').val(grand_total - company_total_product_cost);
     });
 </script>
 <!--selecting customer-->
@@ -650,6 +741,12 @@ if(isset($_POST['submit'])){
 <!--script for calculate total cost for an product select-->
 <script>
     var zero = 0;
+    $('#company_cost_total').val(zero);
+    $('#company_cost_total2').val(zero);
+    $('#company_cost_total3').val(zero);
+    $('#company_cost_total4').val(zero);
+    $('#company_cost_total5').val(zero);
+
     $('#total').val(zero);
     $('#total2').val(zero);
     $('#total3').val(zero);
@@ -660,41 +757,57 @@ if(isset($_POST['submit'])){
 <script>
     $("#quantity").change(function() {
         var available_stock = $('#quantity').val();
+        var company_price = $('#company_price').val();
         var stock_price = $('#stock_price').val();
         var total = available_stock * stock_price;
+        var company_cost_total = available_stock * company_price;
         $('#total').val(total);
+        $('#company_cost_total').val(company_cost_total);
+
     });
 </script>
 <script>
     $("#quantity2").change(function() {
         var available_stock2 = $('#quantity2').val();
+        var company_price2 = $('#company_price2').val();
         var stock_price2 = $('#stock_price2').val();
         var total2 = available_stock2 * stock_price2;
+        var company_cost_total2 = available_stock2 * company_price2;
         $('#total2').val(total2);
+        $('#company_cost_total2').val(company_cost_total2);
     });
 </script>
 <script>
     $("#quantity3").change(function() {
         var available_stock3 = $('#quantity3').val();
+        var company_price3 = $('#company_price3').val();
         var stock_price3 = $('#stock_price3').val();
         var total3 = available_stock3 * stock_price3;
+        var company_cost_total3 = available_stock3 * company_price3;
         $('#total3').val(total3);
+        $('#company_cost_total3').val(company_cost_total3);
     });
 </script>
 <script>
     $("#quantity4").change(function() {
         var available_stock4 = $('#quantity4').val();
+        var company_price4 = $('#company_price4').val();
         var stock_price4 = $('#stock_price4').val();
         var total4 = available_stock4 * stock_price4;
+        var company_cost_total4 = available_stock4 * company_price4;
         $('#total4').val(total4);
+        $('#company_cost_total4').val(company_cost_total4);
     });
 </script>
 <script>
     $("#quantity5").change(function() {
         var available_stock5 = $('#quantity5').val();
+        var company_price5 = $('#company_price5').val();
         var stock_price5 = $('#stock_price5').val();
         var total5 = available_stock5 * stock_price5;
+        var company_cost_total5 = available_stock5 * company_price5;
         $('#total5').val(total5);
+        $('#company_cost_total5').val(company_cost_total5);
     });
 </script>
 

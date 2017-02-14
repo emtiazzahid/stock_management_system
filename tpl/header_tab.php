@@ -8,7 +8,6 @@
             <li id="purchase-tab"><a href="view_purchase.php" class="purchase-tab">Purchase</a></li>
             <li id="supplier-tab"><a href="view_supplier.php" class="supplier-tab">Supplier</a></li>
             <li id="stock-tab"><a href="view_product.php" class="stock-tab">Stocks / Products</a></li>
-            <li id="payment-tab"><a href="view_payments.php" class="payment-tab">Payments</a></li>
             <li id="report-tab"><a href="view_report.php" class="report-tab">Reports</a></li>
         </ul>
         <!-- end tabs -->

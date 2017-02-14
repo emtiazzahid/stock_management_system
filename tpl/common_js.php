@@ -2,9 +2,10 @@
 	<script src="js/lib/jquery.min.js" type="text/javascript"></script>
 	<script src="js/lib/jquery.hotkeys-0.7.9.min.js" type="text/javascript"></script>
 	<script src="js/lib/jquery.validate.min.js" type="text/javascript"></script>
+
 <script>
 	$(document).ready(function() {
-			// SUCCESS AJAX CALL, replace "success: false," by:     success : function() { callSuccessFunction() }, 
+			// SUCCESS AJAX CALL, replace "success: false," by:     success : function() { callSuccessFunction() },
 			jQuery(document).bind('keydown', 'Ctrl+s',function() {
 			  $('#form1').submit();
 			  return false;

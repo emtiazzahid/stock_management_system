@@ -5,10 +5,9 @@ if(isset($_POST['submit'])){
     $contact1 = $_POST['contact1'];
     $contact2= $_POST['contact2'];
     $address= $_POST['address'];
-    $balance= $_POST['balance'];
 
-    $query  = "INSERT into supplier_details (supplier_name, supplier_address, supplier_contact1,supplier_contact2,balance)
-              VALUES ('$name','$address',  '$contact1','$contact2','$balance')";
+    $query  = "INSERT into supplier_details (supplier_name, supplier_address, supplier_contact1,supplier_contact2)
+              VALUES ('$name','$address',  '$contact1','$contact2')";
     $db->execute($query);
     header('Location: view_supplier.php');
 }
@@ -77,12 +76,6 @@ if(isset($_POST['submit'])){
                                             <td class="col-md-3" colspan="3">
                                                 <textarea  col="5" row="3" class="form-control" name="address" id=""></textarea>
                                             </td>
-                                            <td class="col-md-2">
-                                                Balance:
-                                            </td>
-                                            <td class="col-md-3">
-                                                <input type="text" class="form-control" name="balance" id="">
-                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
@@ -103,4 +96,12 @@ if(isset($_POST['submit'])){
     </div>
 </div>
 
-<?php include("master_foot.php"); ?>
+<?php include("assets/js.php"); ?>
+<script>
+    $(document).ready(function () {
+        $('li').children('.supplier-tab').addClass('active-tab');
+    });
+</script>
+</body>
+
+</html>

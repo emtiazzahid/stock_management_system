@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
 <link rel="stylesheet" href="assets/packages/bootstrap-datepicker/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="css/estyle.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css">
 
 
 

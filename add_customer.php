@@ -7,10 +7,9 @@ if(isset($_POST['submit'])){
     $customer_address = $_POST['customer_address'];
     $customer_contact1= $_POST['customer_contact1'];
     $customer_contact2	 = $_POST['customer_contact2'];
-    $balance = $_POST['balance'];
 
-    $query  = "INSERT into customer_details (customer_name, customer_address, customer_contact1,customer_contact2,balance)
-              VALUES ('$customer_name','$customer_address', '$customer_contact1','$customer_contact2','$balance')";
+    $query  = "INSERT into customer_details (customer_name, customer_address, customer_contact1,customer_contact2)
+              VALUES ('$customer_name','$customer_address', '$customer_contact1','$customer_contact2')";
     $db->execute($query);
     header('Location: view_customers.php');
 }
@@ -76,14 +75,6 @@ if(isset($_POST['submit'])){
                                             </td>
                                             <td class="col-md-3">
                                                 <input type="text" class="form-control" name="customer_contact2" id="customer_contact2">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-2">
-                                                Balance:
-                                            </td>
-                                            <td class="col-md-3">
-                                                <input type="text"  class="form-control" name="balance" id="balance">
                                             </td>
                                         </tr>
                                         <tr>

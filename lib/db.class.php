@@ -59,6 +59,19 @@
       * @param $query The query.
       * @param $debug If true, it output the query and the resulting table.
       */
+     function update_prd_quantity($products , $quantity ){
+          $q = "SELECT stock_quantity FROM stock_details WHERE stock_id = '$products' LIMIT 1";
+          $r = mysqli_query($this->connection, $q);
+          while($row = mysqli_fetch_assoc($r)){
+              $r1 = $row;
+          }
+          $previous_quantity = $r1['stock_quantity'];
+
+          $updated_quantity = ($previous_quantity - $quantity);
+          $q = "UPDATE stock_details SET stock_quantity = '$updated_quantity' WHERE stock_id = '$products'";
+          mysqli_query($this->connection, $q);
+          return $updated_quantity;
+      }
     function execute($query, $debug = -1)
     {
       $this->nbQueries++;

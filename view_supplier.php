@@ -30,14 +30,13 @@
               <div class="panel-body">
                <div class="tab-content">
                   <div class="tab-pane active" id="supplier">
-                 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                 <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                         <thead>
                         <tr>
                             <th>No</th>
                             <th>Supplier Namee</th>
                             <th>Supplier Address</th>
                             <th>Contact</th>
-                            <th>Balance</th>
                             <th>Edit /Delete</th>
                         </tr>
                         </thead>
@@ -47,7 +46,6 @@
                             <th>Supplier Namee</th>
                             <th>Supplier Address</th>
                             <th>Contact</th>
-                            <th>Balance</th>
                             <th>Edit /Delete</th>
                         </tr>
                         </tfoot>
@@ -62,7 +60,6 @@
                                 <td> <?php echo  $row['supplier_name']; ?></td>
                                 <td> <?php echo $row['supplier_address']; ?></td>
                                 <td> <?php echo $row['supplier_contact1']; ?></td>
-                                <td> <?php echo $row['balance']; ?></td>
                                 <td>
                                     <a href="update_supplier.php?sid=<?php echo $row['id']; ?>&table=supplier_details"
                                        class="table-actions-button ic-table-edit">
@@ -83,5 +80,12 @@
         </div>
     </div>
 </div>
+<?php include("assets/js.php"); ?>
+<script>
+    $(document).ready(function () {
+        $('li').children('.supplier-tab').addClass('active-tab');
+    });
+</script>
+</body>
 
-<?php include("master_foot.php"); ?>
+</html>

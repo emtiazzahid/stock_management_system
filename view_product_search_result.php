@@ -84,73 +84,65 @@ include_once("init.php");
               <div class="panel-heading">
               <ul class="nav nav-tabs" role="tablist">
                   <li class="active">
-                    <a href="#statistics" role="tab" data-toggle="tab">Statistics</a>
+                    <a href="#statistics" role="tab" data-toggle="tab">Products</a>
                   </li>
-             <?php
-            $stock_avail = $db->countOfAll("stock_details");
-            $q1 = "select stock_name FROM stock_details WHERE stock_quantity <= 5";
-             $lower_p =  mysqli_query($db->connection, $q1);
-             if ($lower_p->num_rows>=1) { ?>
-                  <li><a href="#alerts" role="tab" data-toggle="tab" style="color:red">Alerts</a></li>
-             <?php
-                }
-            ?>
-                </ul>
+              </ul>
+
+                  <?php
+                  if(isset($_POST['btn_prd_search'])){
+                      $search_for = $_POST['search_for'];
+                      $search_key= $_POST['search_key'];
+                      if($search_for == 'name'){
+                          $sql = "SELECT * FROM stock_details WHERE stock_name LIKE '%$search_key%'";
+
+                      }
+                      else{
+                          $price = floatval($search_key);
+                          $sql = "SELECT * FROM stock_details WHERE selling_price = $search_key OR company_price = $search_key";
+                      }
+
+                      $result = mysqli_query($db->connection, $sql);
+                  }
+                  ?>
               </div>
               <div class="panel-body">
                <div class="tab-content">
                   <div class="tab-pane active" id="statistics">
-                                         <table style="width:350px; float:left;" border="0" cellpadding="0" cellspacing="0">
+                      <table  id="example" class="table table-striped table-bordered dt-responsive nowrap"  cellpadding="0" cellspacing="0">
+                       <thead>
+                           <th>ID</th>
+                           <th>stock_id</th>
+                           <th>stock_name</th>
+                           <th>stock_quantity</th>
+                           <th>supplier_id</th>
+                           <th>company_price</th>
+                           <th>selling_price</th>
+                           <th>category</th>
+                           <th>date</th>
+                           <th>expire_date</th>
+                       </thead>
+                          <tbody>
+                          <?php  while ($row = mysqli_fetch_array($result)) { ?>
+                              <tr>
+                                  <td><?php echo $row['id']; ?></td>
+                                  <td><?php echo $row['stock_id']; ?></td>
+                                  <td><?php echo $row['stock_name']; ?></td>
+                                  <td><?php echo $row['stock_quantity']; ?></td>
+                                  <td><?php echo $row['supplier_id']; ?></td>
+                                  <td><?php echo $row['company_price']; ?></td>
+                                  <td><?php echo $row['selling_price']; ?></td>
+                                  <td><?php echo $row['category']; ?></td>
+                                  <td><?php echo $row['date']; ?></td>
+                                  <td><?php echo $row['expire_date']; ?></td>
+                              </tr>
+                          <?php } ?>
+                          </tbody>
                         <tr>
                             <td width="250" align="left">&nbsp;</td>
                             <td width="150" align="left">&nbsp;</td>
                         </tr>
-                        <tr>
-                            <td align="left">Total Number of Products</td>
-                            <td align="left"><?php echo $count = $db->countOfAll("stock_details"); ?>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td align="left">&nbsp;</td>
-                            <td align="left">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td align="left">Tatal Sales Transactions</td>
-                            <td align="left"><?php echo $count = $db->countOfAll("stock_sales"); ?></td>
-                        </tr>
-                        <tr>
-                            <td align="left">&nbsp;</td>
-                            <td align="left">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td align="left">Total number of Suppliers</td>
-                            <td align="left"><?php echo $count = $db->countOfAll("supplier_details"); ?></td>
-                        </tr>
-                        <tr>
-                            <td align="left">&nbsp;</td>
-                            <td align="left">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td align="left">Total Number of Customers</td>
-                            <td align="left"><?php echo $count = $db->countOfAll("customer_details"); ?></td>
-                        </tr>
-                        <tr>
-                            <td align="left">&nbsp;</td>
-                            <td align="left">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td align="left">&nbsp;</td>
-                            <td align="left">&nbsp;</td>
-                        </tr>
                     </table>
 
-                  </div>
-                  <div class="tab-pane" id="alerts">
-                      <?php while($row = mysqli_fetch_assoc($lower_p)){ ?>
-                      <div class="alert alert-danger alert-dismissable">
-                          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                          <strong>lower <?php echo $row['stock_name'] ?> quantity!</strong> Please Add more
-                        </div>
-                      <?php } ?>
                   </div>
                 </div>
               </div>

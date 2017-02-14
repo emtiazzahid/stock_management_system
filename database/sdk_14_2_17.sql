@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2017 at 12:38 PM
+-- Generation Time: Feb 14, 2017 at 12:17 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -56,8 +56,7 @@ CREATE TABLE `customer_details` (
   `customer_name` varchar(200) NOT NULL,
   `customer_address` varchar(500) NOT NULL,
   `customer_contact1` varchar(100) NOT NULL,
-  `customer_contact2` varchar(100) NOT NULL,
-  `balance` int(11) NOT NULL,
+  `customer_contact2` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,18 +64,21 @@ CREATE TABLE `customer_details` (
 -- Dumping data for table `customer_details`
 --
 
-INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `balance`, `created_at`) VALUES
-(8, 'Shorfuddin', 'ecb', '66666666', '88888888', 100, '2017-01-26 04:53:11'),
-(10, 'dipa', 'mirpur', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
-(11, 'babu uddin', 'chitagong', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
-(12, 'rofik', 'dhaka', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
-(13, 'jabed', 'dhaka', '7787876786', '989898988', 80, '2017-01-26 04:53:11'),
-(14, 'rasel', 'dhaka', '7787876786', '989898988', 6240, '2017-01-26 04:53:11'),
-(15, 'shorif', 'dhaka', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
-(16, 'jerin', 'mirpur', '7787876786', '989898988', 1810, '2017-01-26 04:53:11'),
-(17, 'zahid', 'mirpur', '7787876786', '989898988', 0, '2017-01-26 04:53:11'),
-(18, 'Shorfuddin Babu', 'mirpur', '654654', '65454', 0, '2017-01-26 04:53:11'),
-(19, 'Emtiaz', 'Mirpur, Dhaka 1216', '0154654', '01654654', 50000, '2017-01-26 04:56:03');
+INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `created_at`) VALUES
+(8, 'Shorfuddin', 'ecb', '66666666', '88888888', '2017-01-26 04:53:11'),
+(10, 'dipa', 'mirpur', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(11, 'babu uddin', 'chitagong', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(12, 'rofik', 'dhaka', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(13, 'jabed', 'dhaka', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(14, 'rasel', 'dhaka', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(15, 'shorif', 'dhaka', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(16, 'jerin', 'mirpur', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(17, 'zahid', 'mirpur', '7787876786', '989898988', '2017-01-26 04:53:11'),
+(18, 'Shorfuddin Babu', 'mirpur', '654654', '65454', '2017-01-26 04:53:11'),
+(19, 'Emtiaz', 'Mirpur, Dhaka 1216', '0154654', '01654654', '2017-01-26 04:56:03'),
+(20, '', '', '', NULL, '2017-02-05 05:59:15'),
+(21, 'asasdasd', 'asdasd', '54354', NULL, '2017-02-05 06:06:27'),
+(22, 'Rasel Shikder', 'Mirpur', '01558884564', NULL, '2017-02-11 11:28:53');
 
 -- --------------------------------------------------------
 
@@ -130,10 +132,10 @@ INSERT INTO `stock_details` (`id`, `stock_id`, `stock_name`, `stock_quantity`, `
 (35, 'SD35', 'Book', 40, 'babu', '200.00', '250.00', 'education', '2017-01-26 09:20:10', '0000-00-00 00:00:00'),
 (36, 'SD36', 'Money Bag', 30, 'saddam', '7.00', '101.00', 'parts', '2017-01-26 09:20:13', '0000-00-00 00:00:00'),
 (37, 'SD37', 'Mobile', 20, 'saddam', '1000.00', '1100.00', 'electronics', '2017-01-26 09:20:16', '0000-00-00 00:00:00'),
-(38, 'SD38', 'Mouse', 70, 'saddam', '500.00', '550.00', 'computer', '2017-01-26 09:20:18', '0000-00-00 00:00:00'),
-(39, 'SD12', 'Keyboard', 0, '', '250.00', '300.00', 'computer', '2017-01-25 05:56:27', '2017-01-25 00:00:00'),
-(40, 'SD45', 'Mouse', 40, 'labib', '300.00', '350.00', 'computer', '2017-01-25 06:02:36', '0000-00-00 00:00:00'),
-(41, 'SD', '', 0, '', '0.00', '0.00', '', '2017-01-26 10:55:48', '0000-00-00 00:00:00');
+(38, 'SD38', 'Mouse', 64, 'saddam', '500.00', '550.00', 'computer', '2017-02-14 11:16:42', '0000-00-00 00:00:00'),
+(39, 'SD12', 'Keyboard', 0, '', '250.00', '300.00', 'computer', '2017-02-08 09:20:30', '2017-01-25 00:00:00'),
+(40, 'SD45', 'Mouse', 0, 'labib', '300.00', '350.00', 'computer', '2017-02-08 09:25:08', '0000-00-00 00:00:00'),
+(43, 'SD115', 'Keyboard', 86, 'labib', '450.00', '500.00', 'computer', '2017-02-14 11:16:42', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -188,37 +190,61 @@ INSERT INTO `stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_nam
 CREATE TABLE `stock_sales` (
   `id` int(10) UNSIGNED NOT NULL,
   `transactionid` varchar(250) NOT NULL,
-  `stock_name` varchar(200) NOT NULL,
-  `selling_price` decimal(10,2) NOT NULL,
-  `quantity` decimal(10,2) NOT NULL,
-  `amount` decimal(10,2) NOT NULL,
-  `date` date NOT NULL,
-  `username` varchar(120) NOT NULL,
-  `customer_id` varchar(120) NOT NULL,
-  `subtotal` decimal(10,2) NOT NULL,
+  `sales_date` varchar(100) NOT NULL,
+  `selling_price` varchar(200) NOT NULL,
+  `product` varchar(300) NOT NULL,
+  `quantity` varchar(100) NOT NULL,
+  `amount` varchar(100) NOT NULL,
+  `customer` varchar(120) NOT NULL,
+  `address` varchar(150) NOT NULL,
+  `contact` varchar(150) NOT NULL,
   `payment` decimal(10,2) NOT NULL,
-  `balance` decimal(10,2) NOT NULL,
-  `discount` decimal(10,0) DEFAULT NULL,
   `dis_amount` decimal(10,0) DEFAULT NULL,
   `grand_total` decimal(10,0) DEFAULT NULL,
-  `due` date DEFAULT NULL,
+  `due_amount` varchar(200) DEFAULT NULL,
+  `due` varchar(100) DEFAULT NULL,
   `payment_method` varchar(250) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `count1` int(11) DEFAULT NULL,
-  `billnumber` varchar(120) NOT NULL
+  `billnumber` varchar(120) NOT NULL,
+  `l_p` decimal(10,0) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stock_sales`
 --
 
-INSERT INTO `stock_sales` (`id`, `transactionid`, `stock_name`, `selling_price`, `quantity`, `amount`, `date`, `username`, `customer_id`, `subtotal`, `payment`, `balance`, `discount`, `dis_amount`, `grand_total`, `due`, `payment_method`, `description`, `count1`, `billnumber`) VALUES
-(20, 'SD2635', 'Pen', '10.00', '10.00', '100.00', '2013-08-15', 'admin', 'Shorfuddin', '90.00', '10.00', '80.00', '10', '10', '100', '1970-01-01', 'cheque', 'uuuoiuo', 1, 'BILL-126'),
-(21, 'SD264', 'Book', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'babu', '990.00', '100.00', '890.00', '0', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(22, 'SD265', 'Mobile', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'dipa', '990.00', '100.00', '890.00', '0', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(23, 'SD450', 'Book', '0.00', '5.00', '10.00', '2016-12-28', 'admin', 'babu', '0.00', '50.00', '0.00', NULL, NULL, '0', '0000-00-00', '', '', 1, 'BILL-123'),
-(24, 'SD555', 'Pen', '10.00', '5.00', '50.00', '2016-12-28', 'admin', 'babu', '80.00', '50.00', '30.00', NULL, NULL, '0', '0000-00-00', '', '', 1, 'BILL-123'),
-(25, 'SD11111', 'pen', '10.00', '5.00', '50.00', '2016-12-28', 'admin', 'babu', '100.00', '50.00', '50.00', NULL, NULL, NULL, NULL, NULL, NULL, 1, 'BILL-456');
+INSERT INTO `stock_sales` (`id`, `transactionid`, `sales_date`, `selling_price`, `product`, `quantity`, `amount`, `customer`, `address`, `contact`, `payment`, `dis_amount`, `grand_total`, `due_amount`, `due`, `payment_method`, `description`, `billnumber`, `l_p`) VALUES
+(20, 'SD2635', '', '10.00', '', '10.00', '100.00', 'Shorfuddin', '', '', '10.00', '10', '100', '', '1970-01-01', 'cheque', 'uuuoiuo', 'BILL-126', NULL),
+(21, 'SD264', '', '10.00', '', '100.00', '1000.00', 'babu', '', '', '100.00', '10', '1000', '', '1970-01-01', 'cheque', 'iyiuy', 'BILL-127', NULL),
+(22, 'SD265', '', '10.00', '', '100.00', '1000.00', 'dipa', '', '', '100.00', '10', '1000', '', '1970-01-01', 'cheque', 'iyiuy', 'BILL-127', NULL),
+(23, 'SD450', '', '0.00', '', '5.00', '10.00', 'babu', '', '', '50.00', NULL, '0', '', '0000-00-00', '', '', 'BILL-123', NULL),
+(24, 'SD555', '', '10.00', '', '5.00', '50.00', 'babu', '', '', '50.00', NULL, '0', '', '0000-00-00', '', '', 'BILL-123', NULL),
+(25, 'SD11111', '02/05/2017', '10.00', '', '5.00', '50.00', 'babu', '', '', '50.00', NULL, NULL, '', NULL, NULL, NULL, 'BILL-456', NULL),
+(27, 'ST-9047', '02/05/2017', '1100.00,250.00,550.00,,', 'SD37,SD35,SD38,,', '5,7,2,,', '5500,1750,1100,0,0', 'Shorfuddin Babu', '654654', 'mirpur', '8000.00', '300', '8050', '50', '02/26/2017', 'cash', 'nothing', 'BILL-05022017617', NULL),
+(28, 'ST-1563', '02/05/2017', '101.00,,,,', 'SD36,,,,', '4,,,,', '404,0,0,0,0', 'babu uddin', '7787876786', 'chitagong', '400.00', '0', '404', '4', '02/06/2017', 'cash', 'nothing', 'BILL-05022017777', NULL),
+(29, 'ST-8451', '02/05/2017', ',,,,', ',,,,', ',,,,', '0,0,0,0,0', 'jabed', '7787876786', 'dhaka', '0.00', '0', '0', '', '', 'cash', '', 'BILL-05022017724', NULL),
+(41, 'ST-5513', '02/05/2017', '101.00,1100.00,,,', 'SD36,SD37,,,', '8,4,,,', '808,4400,0,0,0', 'Abid ', 'Komlapur', '0654654', '5000.00', '200', '5008', '8', '02/06/2017', 'cash', 'nothing', 'BILL-05022017573', NULL),
+(42, 'ST-7361', '02/05/2017', '550.00,550.00,,,', 'SD38,SD38,,,', '5,3,,,', '2750,1650,0,0,0', 'Abid Vai', 'Motijheel', '6546545', '4200.00', '100', '4300', '100', '02/07/2017', 'cash', 'nothing', 'BILL-05022017671', NULL),
+(43, 'ST-8966', '02/27/2017', '101.00,,,,', 'SD36,,,,', '5,,,,', '505,0,0,0,0', 'Rasel Shikder', 'Mirpur', '01558884564', '400.00', '100', '405', '5', '02/20/2017', 'cash', 'Nothing', 'BILL-11022017986', NULL),
+(44, 'ST-8852', '02/13/2017', '1100.00,550.00,,,', ',SD38', '2,3,,,', '2200,1650,0,0,0', 'jabed', '7787876786', 'dhaka', '3500.00', '50', '3800', '300', '02/13/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017688', NULL),
+(45, 'ST-1754', '02/27/2017', '1100.00,500.00,,,', 'SD37,SD115', '2,5,,,', '2200,2500,0,0,0', 'jabed', '7787876786', 'dhaka', '4600.00', '100', '4600', '0', '02/27/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017937', NULL),
+(46, 'ST-9009', '02/20/2017', '1100.00,1100.00', 'SD37,SD37', '3,4', '3300,20', 'rasel', '7787876786', 'dhaka', '7700.00', '0', '7700', '0', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017269', NULL),
+(47, 'ST-3338', '02/20/2017', '1100.00,550.00', 'SD37,SD38', '2,3', '2200,70', 'shorif', '7787876786', 'dhaka', '0.00', '0', '3850', '', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017549', '3850'),
+(48, 'ST-3517', '02/27/2017', '550.00,101.00', 'SD38,SD36', '6,3', '3300,30', 'Shorfuddin Babu', '654654', 'mirpur', '3600.00', '3', '3600', '0', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017145', '3600'),
+(49, 'ST-5059', '02/20/2017', '250.00,550.00', 'SD35,SD38', '3,4', '750,70', 'rofik', '7787876786', 'dhaka', '2900.00', '0', '2950', '50', '02/27/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017329', '350'),
+(50, 'ST-3403', '02/13/2017', '1100.00', 'SD37', '3', '3300', 'rasel', '7787876786', 'dhaka', '0.00', '0', '3300', '', '02/20/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017936', '300'),
+(51, 'ST-4875', '02/27/2017', '1100.00', 'SD37', '3', '3300', 'Shorfuddin', '66666666', 'ecb', '0.00', '0', '3300', '', '', 'cash', '', 'BILL-14022017852', '300'),
+(52, 'ST-6979', '', '500.00', 'SD115', '10', '5000', '', '', '', '5000.00', '0', '5000', '0', '', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017952', '500'),
+(53, 'ST-2109', '02/27/2017', '500.00', 'SD115', '10', '5000', 'rofik', '7787876786', 'dhaka', '5000.00', '0', '5000', '0', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017560', '500'),
+(54, 'ST-5249', '02/27/2017', '500.00', 'SD115', '4', '2000', '', '', '', '0.00', '0', '2000', '', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017777', '200'),
+(55, 'ST-5249', '02/27/2017', '500.00', 'SD115', '4', '2000', '', '', '', '0.00', '0', '2000', '', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017777', '200'),
+(56, 'ST-5249', '02/27/2017', '500.00', 'SD115', '4', '2000', '', '', '', '0.00', '0', '2000', '', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017777', '200'),
+(57, 'ST-9621', '', '101.00', 'SD36', '3', '303', 'jabed', '7787876786', 'dhaka', '300.00', '0', '303', '3', '02/27/2017', 'cash', 'Boll Pen', 'BILL-14022017151', '282'),
+(58, 'ST-2599', '02/12/2017', '500.00', 'SD115', '2', '1000', 'shorif', '7787876786', 'dhaka', '1000.00', '0', '1000', '0', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017694', '100'),
+(59, 'ST-2599', '02/12/2017', '500.00', 'SD115', '2', '1000', 'shorif', '7787876786', 'dhaka', '1000.00', '0', '1000', '0', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017694', '100'),
+(60, 'ST-2599', '02/12/2017', '500.00', 'SD115', '2', '1000', 'shorif', '7787876786', 'dhaka', '1000.00', '0', '1000', '0', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017694', '100'),
+(61, 'ST-9102', '02/14/2017', '550.00,500.00', 'SD38,SD115', '3,2', '1650,88', 'rasel', '7787876786', 'dhaka', '2650.00', '0', '2650', '0', '02/27/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017264', '250'),
+(62, 'ST-8875', '02/17/2017', '550.00,500.00', 'SD38,SD115', '3,2', '1650,88', 'Shorfuddin Babu', '654654', 'mirpur', '2600.00', '0', '2650', '50', '02/28/2017', 'cash', 'asdjahjksdh kjashd jasd', 'BILL-14022017559', '250');
 
 -- --------------------------------------------------------
 
@@ -278,20 +304,19 @@ CREATE TABLE `supplier_details` (
   `supplier_name` varchar(200) NOT NULL,
   `supplier_address` varchar(500) NOT NULL,
   `supplier_contact1` varchar(100) NOT NULL,
-  `supplier_contact2` varchar(100) DEFAULT NULL,
-  `balance` int(11) DEFAULT '0'
+  `supplier_contact2` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `supplier_details`
 --
 
-INSERT INTO `supplier_details` (`id`, `supplier_name`, `supplier_address`, `supplier_contact1`, `supplier_contact2`, `balance`) VALUES
-(37, 'Rahul', '#123, dhaka', '7787876786', '89798', 3000),
-(38, 'labib', '#124, mirpur, bangladesh ', '7787876786', '9539126325', 2500),
-(39, 'jidan', '#126, ECB , Mipur , Dhaka', '7787876786', '9539126325', 1500),
-(44, 'saddam', '#126, Dhaka', '7787876786', '9539126325', 2000),
-(49, 'saddam', '#125, Dhaka 1216', '777777777777', '6463468465465', 25000);
+INSERT INTO `supplier_details` (`id`, `supplier_name`, `supplier_address`, `supplier_contact1`, `supplier_contact2`) VALUES
+(37, 'Rahul', '#123, dhaka', '7787876786', '89798'),
+(38, 'labib', '#124, mirpur, bangladesh ', '7787876786', '9539126325'),
+(39, 'jidan', '#126, ECB , Mipur , Dhaka', '7787876786', '9539126325'),
+(44, 'saddam', '#126, Dhaka', '7787876786', '9539126325'),
+(50, 'Md. Ratul', 'Uttora, Dhaka', '01868456404', '01785564564');
 
 -- --------------------------------------------------------
 
@@ -412,7 +437,7 @@ ALTER TABLE `category_details`
 -- AUTO_INCREMENT for table `customer_details`
 --
 ALTER TABLE `customer_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `stock_avail`
 --
@@ -422,7 +447,7 @@ ALTER TABLE `stock_avail`
 -- AUTO_INCREMENT for table `stock_details`
 --
 ALTER TABLE `stock_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `stock_entries`
 --
@@ -432,7 +457,7 @@ ALTER TABLE `stock_entries`
 -- AUTO_INCREMENT for table `stock_sales`
 --
 ALTER TABLE `stock_sales`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT for table `stock_user`
 --
@@ -442,7 +467,7 @@ ALTER TABLE `stock_user`
 -- AUTO_INCREMENT for table `supplier_details`
 --
 ALTER TABLE `supplier_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `transactions`
 --

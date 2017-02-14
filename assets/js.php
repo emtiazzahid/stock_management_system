@@ -18,6 +18,8 @@
 <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
 <script src="assets/packages/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script src="js/date_pic/jquery.date_input.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap.min.js"></script>
 
 
 <script>

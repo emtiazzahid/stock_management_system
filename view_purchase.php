@@ -36,7 +36,7 @@
               <div class="panel-body">
                <div class="tab-content">
                   <div class="tab-pane active" id="purchase">
-                   <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                   <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th>No</th>
